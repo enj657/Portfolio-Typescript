@@ -23,9 +23,9 @@ export default function Projects() {
           key={dataItem.id}
         >
           <div className='relative grid rounded-3xl py-8 sm:grid-cols-6 md:mb-10 md:p-8 md:backdrop-blur-sm md:backdrop-filter'>
-            <div className='col-span-2'>
+            <div className='col-span-2 my-auto'>
               <Image
-                className=''
+                className='w-5/6'
                 width={100}
                 height={100}
                 src={dataItem.src}
@@ -70,7 +70,7 @@ export default function Projects() {
           key={dataItem.id}
         >
           <div className='relative grid rounded-3xl py-8 sm:grid-cols-6 md:mb-10 md:p-8 md:backdrop-blur-sm md:backdrop-filter'>
-            <div className='col-span-2'>
+            <div className='col-span-2 my-auto'>
               <Image
                 className='w-5/6'
                 width={100}

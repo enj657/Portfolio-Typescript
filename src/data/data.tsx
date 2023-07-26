@@ -52,7 +52,6 @@ export const Experience = (): ExperienceData => {
     href: string;
     company: string;
     degree: string;
-    description: string;
     listItems: string[];
   }
 
@@ -70,8 +69,7 @@ export const Education = (): EducationData => {
         href: "https://www.",
         company: "Washington University in St. Louis",
         degree: "Certificate in Data Analytics",
-        description: "Lorem ipsum dolor lorem ipsum dolor.",
-        listItems: ["Python", "SQL", "JS", "ML"],
+        listItems: [],
       },
       {
         id: 2,
@@ -81,7 +79,6 @@ export const Education = (): EducationData => {
         href: "https://welcome.miami.edu/",
         company: "University of Miami",
         degree: "B.S. Health Sciences, Minor in Religious Studies",
-        description: "Lorem ipsum dolor lorem ipsum dolor.",
         listItems: [],
       },
     ];
