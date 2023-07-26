@@ -37,7 +37,6 @@ export default function EducationComponent() {
                   {dataItem.company}
                 </Link>
                 <p className='text-sm text-slate-300'>{dataItem.degree}</p>
-                <p className='my-4'>{dataItem.description}</p>
                 <ul className='flex flex-wrap gap-2'>
                   {dataItem.listItems.map((item, index) => (
                     <li
