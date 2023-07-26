@@ -21,7 +21,7 @@ export default function EducationComponent() {
             scale={1.05}
             key={dataItem.id}
           >
-            <div className='relative grid rounded-3xl py-8 sm:grid-cols-6 md:mb-10 md:p-8 md:backdrop-blur-sm md:backdrop-filter'>
+            <div className='relative grid my-8 rounded-3xl p-8 sm:grid-cols-6 md:mb-10 md:p-8 md:backdrop-blur-sm md:backdrop-filter'>
               <span className='col-span-2'>
                 {dataItem.year1} &#8212; {dataItem.year2}
               </span>
@@ -32,7 +32,7 @@ export default function EducationComponent() {
                 <Link
                   href={dataItem.href}
                   target='_blank'
-                  className="after:content[''] after:absolute after:-inset-x-0 after:-inset-y-0 md:after:rounded-3xl md:after:border-0 md:after:border-t md:after:border-white md:after:border-opacity-30 md:after:bg-white md:after:bg-opacity-5"
+                  className="after:content[''] after:absolute after:-inset-x-0 after:-inset-y-0 after:rounded-3xl after:border-0 after:border-t after:border-white after:border-opacity-30 after:bg-white after:bg-opacity-5 after:shadow-big"
                 >
                   {dataItem.company}
                 </Link>

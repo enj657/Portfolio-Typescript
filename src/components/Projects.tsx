@@ -19,23 +19,23 @@ export default function Projects() {
           glareColor='#e3e3e3'
           glarePosition='top'
           glareBorderRadius='1.5rem'
-          scale={1.05}
+          scale={1.0}
           key={dataItem.id}
         >
-          <div className='relative grid rounded-3xl py-8 sm:grid-cols-6 md:mb-10 md:p-8 md:backdrop-blur-sm md:backdrop-filter'>
-            <div className='col-span-2 my-auto'>
+          <div className='relative flex flex-col rounded-3xl my-8 py-8 sm:grid-cols-6 md:mb-10 md:grid md:p-8 md:backdrop-blur-sm md:backdrop-filter'>
+            <div className='flex justify-center align-middle md:col-span-2 md:my-auto'>
               <Image
-                className='w-5/6'
-                width={100}
-                height={100}
+                className='w-4/6 pb-2 md:w-5/6 md:pb-0'
+                width={300}
+                height={300}
                 src={dataItem.src}
                 alt=''
               />
             </div>
-            <div className='col-span-4'>
+            <div className='flex flex-col text-center md:col-span-4 md:text-left md:pl-2'>
               <p>
                 <Link
-                  className="after:content[''] after:absolute after:-inset-x-0 after:-inset-y-0 md:after:rounded-3xl md:after:border-0 md:after:border-t md:after:border-white md:after:border-opacity-30 md:after:bg-white md:after:bg-opacity-5 md:after:shadow-big"
+                  className="after:content[''] after:absolute after:-inset-x-0 after:-inset-y-0 after:rounded-3xl after:border-0 after:border-t after:border-white after:border-opacity-30 after:bg-white after:bg-opacity-5 after:shadow-big"
                   href={dataItem.href}
                   target='_blank'
                 >
@@ -43,7 +43,7 @@ export default function Projects() {
                 </Link>
               </p>
               <p className='mb-4'>{dataItem.publishDate}</p>
-              <ul className='flex flex-wrap gap-2'>
+              <ul className='flex flex-wrap justify-center md:justify-start gap-2 align-middle'>
                 {dataItem.listItems.map((item, index) => (
                   <li
                     key={index}
@@ -66,23 +66,23 @@ export default function Projects() {
           glareColor='#e3e3e3'
           glarePosition='top'
           glareBorderRadius='1.5rem'
-          scale={1.05}
+          scale={1.0}
           key={dataItem.id}
         >
-          <div className='relative grid rounded-3xl py-8 sm:grid-cols-6 md:mb-10 md:p-8 md:backdrop-blur-sm md:backdrop-filter'>
-            <div className='col-span-2 my-auto'>
+          <div className='relative flex flex-col rounded-3xl my-8 py-8 sm:grid-cols-6 md:mb-10 md:grid md:p-8 md:backdrop-blur-sm md:backdrop-filter'>
+            <div className='flex justify-center align-middle md:col-span-2 md:my-auto'>
               <Image
-                className='w-5/6'
-                width={100}
-                height={100}
+                className='w-4/6 pb-2 md:w-5/6 md:pb-0'
+                width={300}
+                height={300}
                 src={dataItem.src}
                 alt=''
               />
             </div>
-            <div className='col-span-4'>
+            <div className='flex flex-col text-center md:col-span-4 md:text-left md:pl-2'>
               <p>
                 <Link
-                  className="after:content[''] after:absolute after:-inset-x-0 after:-inset-y-0 md:after:rounded-3xl md:after:border-0 md:after:border-t md:after:border-white md:after:border-opacity-30 md:after:bg-white md:after:bg-opacity-5"
+                  className="after:content[''] after:absolute after:-inset-x-0 after:-inset-y-0 after:rounded-3xl after:border-0 after:border-t after:border-white after:border-opacity-30 after:bg-white after:bg-opacity-5 after:shadow-big"
                   href={dataItem.href}
                   target='_blank'
                 >
@@ -90,7 +90,7 @@ export default function Projects() {
                 </Link>
               </p>
               <p className='mb-4'>{dataItem.publishDate}</p>
-              <ul className='flex flex-wrap gap-2'>
+              <ul className='flex flex-wrap justify-center md:justify-start gap-2 align-middle'>
                 {dataItem.listItems.map((item, index) => (
                   <li
                     key={index}
