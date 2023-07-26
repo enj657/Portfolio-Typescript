@@ -105,7 +105,7 @@ export const WorkProjects = (): WorkProjectsData => {
   const data: WorkProjectsData = [
       {
         id: 1,
-        src: "/stlouisdesignbuild-img.png",
+        src: "/lami-img.png",
         href: "https://www.captiva2-webdev.com/lami",
         website: "Lami Wood",
         publishDate: "July 2023",
@@ -113,7 +113,7 @@ export const WorkProjects = (): WorkProjectsData => {
       },
       {
         id: 2,
-        src: "/stlouisdesignbuild-img.png",
+        src: "/pmainfo-img.png",
         href: "https://www.pmaminfo.com",
         website: "Precious Metals Association",
         publishDate: "June 2023",
@@ -153,7 +153,7 @@ export const WorkProjects = (): WorkProjectsData => {
       },
       {
         id: 7,
-        src: "/stlouisdesignbuild-img.png",
+        src: "/hubfares-img.png",
         href: "https://www.captiva2-webdev.com/hubfares",
         website: "Hubfares",
         publishDate: "December 2022",
@@ -182,7 +182,7 @@ export const PersonalProjects = (): PersonalProjectsData => {
   const data: PersonalProjectsData = [
     {
       id: 1,
-      src: "/stlouisdesignbuild-img.png",
+      src: "/topstlouis-img.png",
       href: "https://enj657.github.io/TOP_stl_website/",
       website: "Fun Things To Do In St. Louis",
       publishDate: "April 2022",
@@ -190,7 +190,7 @@ export const PersonalProjects = (): PersonalProjectsData => {
     },
     {
       id: 2,
-      src: "/stlouisdesignbuild-img.png",
+      src: "/travelitinerary-img.png",
       href: "https://enj657.github.io/travel-itinerary-react/",
       website: "Travel Itinerary",
       publishDate: "June 2022",
@@ -198,7 +198,7 @@ export const PersonalProjects = (): PersonalProjectsData => {
     },
     {
       id: 3,
-      src: "/stlouisdesignbuild-img.png",
+      src: "/memegenerator-img.png",
       href: "https://enj657.github.io/meme-generator/",
       website: "Meme Generator",
       publishDate: "June 2022",
