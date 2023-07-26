@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 14, 32, 56;
+  --background-end-rgb: 12, 12, 37;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 14, 32, 56;
+    --background-end-rgb: 12, 12, 37;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+.card-box-shadow {
+  box-shadow: rgba(5, 5, 5, 0.2) 0px 19px 38px, rgba(5, 5, 5, 0.12) 0px 15px 12px;
+}
