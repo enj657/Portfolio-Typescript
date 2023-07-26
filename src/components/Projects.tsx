@@ -20,6 +20,7 @@ export default function Projects() {
           glarePosition='top'
           glareBorderRadius='1.5rem'
           scale={1.0}
+          gyroscope={true}
           key={dataItem.id}
         >
           <div className='relative flex flex-col rounded-3xl my-8 py-8 sm:grid-cols-6 md:mb-10 md:grid md:p-8 md:backdrop-blur-sm md:backdrop-filter'>
@@ -67,6 +68,7 @@ export default function Projects() {
           glarePosition='top'
           glareBorderRadius='1.5rem'
           scale={1.0}
+          gyroscope={true}
           key={dataItem.id}
         >
           <div className='relative flex flex-col rounded-3xl my-8 py-8 sm:grid-cols-6 md:mb-10 md:grid md:p-8 md:backdrop-blur-sm md:backdrop-filter'>
