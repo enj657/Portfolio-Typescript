@@ -94,7 +94,7 @@ export default function Projects() {
                 {dataItem.listItems.map((item, index) => (
                   <li
                     key={index}
-                    className='rounded-3xl bg-gradient-to-b from-teal-900 to-teal-700  px-4 py-1'
+                    className='mb-1 rounded-3xl border-0 border-t border-white border-opacity-60 bg-gradient-to-b from-[#B842DC]/80 to-[#7c2c95]/70 px-4 py-1 text-sm leading-6'
                   >
                     {item}
                   </li>
