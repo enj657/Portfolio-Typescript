@@ -14,9 +14,9 @@ export default function Header() {
 
   return (
     <header className='lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:p-12'>
-      <div className='flex flex-1 flex-col justify-between p-4 md:px-12 md:py-8'>
+      <div className='flex flex-1 flex-col justify-between p-4 md:px-12 md:py-8 lg:p-0'>
         <div>
-          <div className='mb-4 text-[#B842DC] hover:text-teal-500'>
+          <div className='mb-4 text-[#B842DC] hover:text-teal-500 lg:pt-8'>
             <h1 className='relative m-auto w-48 md:m-0 md:w-80'>
               <Link href='/'>
                 <Logo3 />
