@@ -1,20 +1,116 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import Tilt from 'react-parallax-tilt';
 import { WorkProjects, PersonalProjects } from '../data/data';
 import Image from 'next/image';
 import Link from 'next/link';
+import { filterDataByListItem } from './Filter';
+import CardNotFound from './CardNotFound';
 
 export default function Projects() {
+  const [filterCriteria, setFilterCriteria] = useState('');
+  const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
+
+  // Call the functions to get the data arrays
   const dataWorkProj = WorkProjects();
   const dataPersonalProj = PersonalProjects();
 
+  const filteredWorkProjects = filterCriteria
+    ? filterDataByListItem(() => dataWorkProj, filterCriteria)
+    : dataWorkProj;
+
+  const filteredPersonalProjects = filterCriteria
+    ? filterDataByListItem(() => dataPersonalProj, filterCriteria)
+    : dataPersonalProj;
+
+  // Array of all possible list items
+  const allListItems = [
+    'PHP',
+    'HTML',
+    'CSS',
+    'React',
+    'JS',
+    'WordPress',
+    'slick.js',
+    // Add other possible items here
+  ];
+
+  // Filter the list of possible items based on the current input
+  const filteredSuggestionsArray = allListItems.filter((item) =>
+    item.toLowerCase().includes(filterCriteria.toLowerCase())
+  );
+
+  // Filter the list of possible items based on the current input and set the filtered suggestions
+  const handleInputChange = (e: any) => {
+    const input = e.target.value;
+    setFilterCriteria(input);
+
+    const suggestions = allListItems.filter((item) =>
+      item.toLowerCase().includes(input.toLowerCase())
+    );
+
+    setFilteredSuggestions(suggestions);
+  };
+
+  // Handle selecting a suggestion from the autocomplete dropdown
+  const handleSuggestionSelect = (suggestion: any) => {
+    setFilterCriteria(suggestion);
+    setFilteredSuggestions([]);
+  };
+
+  // Handle hiding the dropdown when the input loses focus
+  const handleInputBlur = () => {
+    setTimeout(() => {
+      setFilteredSuggestions([]);
+    }, 100);
+  };
+
   return (
     <section className='' id='projects'>
-      <h2 className='p-4 pb-3 text-center text-2xl text-teal-500 md:px-12 md:py-8 md:pb-2 md:text-left lg:px-12 lg:py-8'>
+      <div className='flex align-middle flex-col md:flex-row'>
+        <h2 className='px-4 pt-2 pb-4 text-center text-2xl text-teal-500 md:px-12 md:pb-2 md:text-left lg:px-12 lg:py-2'>
+          Projects
+        </h2>
+        <div className=' flex flex-grow gap-3 md:gap-6 lg:gap-2'>
+          <div className='relative flex flex-grow'>
+            <input
+              className='flex h-12 flex-grow rounded-3xl border border-white bg-transparent px-5 text-base text-[#B842DC] focus:outline-none focus:ring focus:ring-teal-500/70'
+              type='text'
+              value={filterCriteria}
+              onChange={handleInputChange}
+              onFocus={handleInputChange} // Display suggestions on input focus
+              onBlur={handleInputBlur} // Hide suggestions when input loses focus
+              placeholder='Filter projects by technology...'
+            />
+
+            {filteredSuggestions.length > 0 && (
+              <ul className='absolute top-12 z-10 max-h-48 w-full overflow-y-auto rounded-lg border border-gray-300 bg-white/90 text-[#B842DC] shadow-lg'>
+                {filteredSuggestions.map((suggestion, index) => (
+                  <li
+                    key={index}
+                    className='cursor-pointer px-5 py-2 hover:bg-gray-100'
+                    onClick={() => handleSuggestionSelect(suggestion)}
+                  >
+                    {suggestion}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+          <button
+            className='h-12 w-12 rounded-full border px-3 py-1 text-base md:mr-12 lg:m-0'
+            onClick={() => setFilterCriteria('')}
+          >
+            ✖
+          </button>
+        </div>
+      </div>
+
+      <h3 className='p-4 pb-3 text-center text-xl text-teal-500 md:px-12 md:py-8 md:pb-2 md:text-left lg:px-12 lg:py-8'>
         Work Projects
-      </h2>
-      {dataWorkProj.map((dataItem) => (
+      </h3>
+      {filteredWorkProjects.length === 0 && <CardNotFound />}
+      {filteredWorkProjects.map((dataItem) => (
         <Tilt
           className='my-8 md:mx-12 lg:m-0'
           glareEnable={true}
@@ -64,10 +160,12 @@ export default function Projects() {
         </Tilt>
       ))}
 
-      <h2 className='p-4 pb-3 text-center text-2xl text-teal-500 md:px-12 md:py-8 md:pb-2 md:text-left lg:px-12 lg:py-8'>
+      <h3 className='p-4 pb-3 text-center text-xl text-teal-500 md:px-12 md:py-8 md:pb-2 md:text-left lg:px-12 lg:py-8'>
         Personal Projects
-      </h2>
-      {dataPersonalProj.map((dataItem) => (
+      </h3>
+
+      {filteredPersonalProjects.length === 0 && <CardNotFound />}
+      {filteredPersonalProjects.map((dataItem) => (
         <Tilt
           className='my-8 md:mx-12 lg:m-0'
           glareEnable={true}

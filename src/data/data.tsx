@@ -29,7 +29,7 @@ export const Adjective = (): AdjectiveData => {
   {
     id: 4,
     adjective: "Vegetarian",
-    emoji: "🍉 🥗 🥝",
+    emoji: "🍉",
   },
   {
     id: 5,
@@ -44,12 +44,12 @@ export const Adjective = (): AdjectiveData => {
   {
     id: 7,
     adjective: "Traveler",
-    emoji: "🛫 🌎 🗺 🛩",
+    emoji: "🛩",
   },
   {
     id: 8,
     adjective: "Stargazer",
-    emoji: "🔭 🌌",
+    emoji: "🌌",
   },
   {
     id: 9,
@@ -59,14 +59,134 @@ export const Adjective = (): AdjectiveData => {
   {
     id: 10,
     adjective: "Cat Mom",
-    emoji: "🐈 🐾 😺",
+    emoji: "🐈",
   },
 ];
 
 return data;
 };
 
+  // Define the interface for a single project
+  interface Projects {
+    id: number;
+    src: string;
+    href: string;
+    website: string;
+    publishDate: string;
+    listItems: string[];
+  }
 
+
+// Define the type for the array of projects
+type WorkProjectsData = Projects[];
+
+export const WorkProjects = (): WorkProjectsData => {
+  const data: WorkProjectsData = [
+      {
+        id: 1,
+        src: "/lami-img.png",
+        href: "https://www.captiva2-webdev.com/lami",
+        website: "Lami Wood",
+        publishDate: "July 2023",
+        listItems: ["PHP", "JavaScript", "HTML", "CSS"],
+      },
+      {
+        id: 2,
+        src: "/pmainfo-img.png",
+        href: "https://www.pmaminfo.com",
+        website: "Precious Metals Association",
+        publishDate: "June 2023",
+        listItems: ["PHP", "JavaScript", "HTML", "CSS"],
+      },
+      {
+        id: 3,
+        src: "/stlouisdesignbuild-img.png",
+        href: "https://www.stlouisdesignbuild.com",
+        website: "St. Louis Design Build",
+        publishDate: "May 2023",
+        listItems: ["PHP", "JavaScript", "HTML", "CSS"],
+      },
+      {
+        id: 4,
+        src: "/diningrd-img.png",
+        href: "https://www.diningrd.com",
+        website: "Dining RD",
+        publishDate: "April 2023",
+        listItems: ["PHP", "JavaScript", "HTML", "CSS", "WordPress"],
+      },
+      {
+        id: 5,
+        src: "/industrialally-img.png",
+        href: "https://www.industrial-ally.com",
+        website: "Industrial Ally",
+        publishDate: "March 2023",
+        listItems: ["PHP", "JavaScript", "HTML", "CSS"],
+      },
+      {
+        id: 6,
+        src: "/clearcordisplays-img.png",
+        href: "https://www.clearcordisplays.com",
+        website: "ClearCor Displays",
+        publishDate: "Feb 2023",
+        listItems: ["PHP", "JavaScript", "HTML", "CSS", "slick.js"],
+      },
+      {
+        id: 7,
+        src: "/hubfares-img.png",
+        href: "https://www.captiva2-webdev.com/hubfares",
+        website: "Hubfares",
+        publishDate: "December 2022",
+        listItems: ["PHP", "JavaScript", "HTML", "CSS", "slick.js"],
+      },
+      {
+        id: 8,
+        src: "/joinschaeffer-img.png",
+        href: "https://www.joinschaeffer.com/",
+        website: "Schaeffer Oil",
+        publishDate: "October 2022",
+        listItems: ["PHP", "JavaScript", "HTML", "CSS"],
+      },
+    ];
+  
+    return data;
+  };
+  
+  
+
+
+// Define the type for the array of projects
+type PersonalProjectsData = Projects[];
+
+export const PersonalProjects = (): PersonalProjectsData => {
+  const data: PersonalProjectsData = [
+    {
+      id: 1,
+      src: "/topstlouis-img.png",
+      href: "https://enj657.github.io/TOP_stl_website/",
+      website: "Fun Things To Do In St. Louis",
+      publishDate: "April 2022",
+      listItems: ["JavaScript", "HTML", "CSS"],
+    },
+    {
+      id: 2,
+      src: "/travelitinerary-img.png",
+      href: "https://enj657.github.io/travel-itinerary-react/",
+      website: "Travel Itinerary",
+      publishDate: "June 2022",
+      listItems: ["React", "JavaScript", "HTML", "CSS"],
+    },
+    {
+      id: 3,
+      src: "/memegenerator-img.png",
+      href: "https://enj657.github.io/meme-generator/",
+      website: "Meme Generator",
+      publishDate: "June 2022",
+      listItems: ["React", "JavaScript", "HTML", "CSS"],
+    },
+  ];
+
+  return data;
+};
 
 
 
@@ -159,124 +279,3 @@ export const Education = (): EducationData => {
   };
   
 
-  // Define the interface for a single project
-  interface Projects {
-    id: number;
-    src: string;
-    href: string;
-    website: string;
-    publishDate: string;
-    listItems: string[];
-  }
-
-
-// Define the type for the array of projects
-type WorkProjectsData = Projects[];
-
-export const WorkProjects = (): WorkProjectsData => {
-  const data: WorkProjectsData = [
-      {
-        id: 1,
-        src: "/lami-img.png",
-        href: "https://www.captiva2-webdev.com/lami",
-        website: "Lami Wood",
-        publishDate: "July 2023",
-        listItems: ["PHP", "HTML", "CSS"],
-      },
-      {
-        id: 2,
-        src: "/pmainfo-img.png",
-        href: "https://www.pmaminfo.com",
-        website: "Precious Metals Association",
-        publishDate: "June 2023",
-        listItems: ["PHP", "HTML", "CSS"],
-      },
-      {
-        id: 3,
-        src: "/stlouisdesignbuild-img.png",
-        href: "https://www.stlouisdesignbuild.com",
-        website: "St. Louis Design Build",
-        publishDate: "May 2023",
-        listItems: ["PHP", "HTML", "CSS"],
-      },
-      {
-        id: 4,
-        src: "/diningrd-img.png",
-        href: "https://www.diningrd.com",
-        website: "Dining RD",
-        publishDate: "April 2023",
-        listItems: ["PHP", "HTML", "CSS", "WordPress"],
-      },
-      {
-        id: 5,
-        src: "/industrialally-img.png",
-        href: "https://www.industrial-ally.com",
-        website: "Industrial Ally",
-        publishDate: "March 2023",
-        listItems: ["PHP", "HTML", "CSS"],
-      },
-      {
-        id: 6,
-        src: "/clearcordisplays-img.png",
-        href: "https://www.clearcordisplays.com",
-        website: "ClearCor Displays",
-        publishDate: "Feb 2023",
-        listItems: ["PHP", "HTML", "CSS", "slick.js"],
-      },
-      {
-        id: 7,
-        src: "/hubfares-img.png",
-        href: "https://www.captiva2-webdev.com/hubfares",
-        website: "Hubfares",
-        publishDate: "December 2022",
-        listItems: ["PHP", "HTML", "CSS", "slick.js"],
-      },
-      {
-        id: 8,
-        src: "/joinschaeffer-img.png",
-        href: "https://www.joinschaeffer.com/",
-        website: "Schaeffer Oil",
-        publishDate: "October 2022",
-        listItems: ["PHP", "HTML", "CSS"],
-      },
-    ];
-  
-    return data;
-  };
-  
-  
-
-
-// Define the type for the array of projects
-type PersonalProjectsData = Projects[];
-
-export const PersonalProjects = (): PersonalProjectsData => {
-  const data: PersonalProjectsData = [
-    {
-      id: 1,
-      src: "/topstlouis-img.png",
-      href: "https://enj657.github.io/TOP_stl_website/",
-      website: "Fun Things To Do In St. Louis",
-      publishDate: "April 2022",
-      listItems: ["JS", "HTML", "CSS"],
-    },
-    {
-      id: 2,
-      src: "/travelitinerary-img.png",
-      href: "https://enj657.github.io/travel-itinerary-react/",
-      website: "Travel Itinerary",
-      publishDate: "June 2022",
-      listItems: ["React", "JS", "HTML", "CSS"],
-    },
-    {
-      id: 3,
-      src: "/memegenerator-img.png",
-      href: "https://enj657.github.io/meme-generator/",
-      website: "Meme Generator",
-      publishDate: "June 2022",
-      listItems: ["React", "JS", "HTML", "CSS"],
-    },
-  ];
-
-  return data;
-};

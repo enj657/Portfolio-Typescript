@@ -15,6 +15,9 @@ module.exports = {
       boxShadow: {
         'big': 'rgba(5, 5, 5, 0.2) 0px 19px 38px, rgba(5, 5, 5, 0.12) 0px 15px 12px',
       },
+      lineHeight: {
+        '12': '48px',
+      }
     },
   },
   plugins: [],
