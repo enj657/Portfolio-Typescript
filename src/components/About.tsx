@@ -7,9 +7,9 @@ export default function About() {
         <h2 className='pb-3 md:pt-12 text-center text-2xl text-teal-500 md:text-left'>
           About
         </h2>
-        <p className='mt-4 mb-6 text-base'>{`Hey, I'm Elle, a web developer who loves creating fun websites. I got hooked on web development after a data analytics bootcamp in 2022.`}</p>
-        <p className='mb-6 text-base'>{`I'm all about making websites look incredible on any device and accessible to everyone. I want the web to be a fun and inclusive place for all. I love keeping up to date with the latest technologies and have been continuously improving my knowledge of HTML, JS, and CSS.`}</p>
-        <p className='mb-6 text-base'>{`When I'm not coding, you can find me hiking, hanging out with loved ones, playing music, or exploring virtual worlds in video games.`}</p>
+        <p className='mt-4 mb-6 text-base text-center md:text-left'>{`Hey, I'm Elle, a web developer who loves creating fun websites. I got hooked on web development after a data analytics bootcamp in 2022.`}</p>
+        <p className='mb-6 text-base text-center md:text-left'>{`I'm all about making websites look incredible on any device and accessible to everyone. I want the web to be a fun and inclusive place for all. I love keeping up to date with the latest technologies and have been continuously improving my knowledge of HTML, JS, and CSS.`}</p>
+        <p className='mb-6 text-base text-center md:text-left'>{`When I'm not coding, you can find me hiking, hanging out with loved ones, playing music, or exploring virtual worlds in video games.`}</p>
       </div>
     </section>
   );
