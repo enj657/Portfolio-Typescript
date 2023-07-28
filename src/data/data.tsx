@@ -1,4 +1,76 @@
   // Define the interface for a single project
+  interface Adjective {
+    id: number;
+    adjective: string;
+    emoji: string;
+  }
+
+
+// Define the type for the array of projects
+type AdjectiveData = Adjective[];
+
+export const Adjective = (): AdjectiveData => {
+  const data: AdjectiveData = [
+  {
+    id: 1,
+    adjective: "Web Developer",
+    emoji: "💻",
+  },
+  {
+    id: 2,
+    adjective: "Data Analyst",
+    emoji: "📊",
+  },
+  {
+    id: 3,
+    adjective: "Musician",
+    emoji: "🎻",
+  },
+  {
+    id: 4,
+    adjective: "Vegetarian",
+    emoji: "🍉 🥗 🥝",
+  },
+  {
+    id: 5,
+    adjective: "Hiker",
+    emoji: "🏔",
+  },
+  {
+    id: 6,
+    adjective: "Sports Fan",
+    emoji: "🎾",
+  },
+  {
+    id: 7,
+    adjective: "Traveler",
+    emoji: "🛫 🌎 🗺 🛩",
+  },
+  {
+    id: 8,
+    adjective: "Stargazer",
+    emoji: "🔭 🌌",
+  },
+  {
+    id: 9,
+    adjective: "Partner",
+    emoji: "🌈",
+  },
+  {
+    id: 10,
+    adjective: "Cat Mom",
+    emoji: "🐈 🐾 😺",
+  },
+];
+
+return data;
+};
+
+
+
+
+
+// Define the interface for a single project
   interface Experience {
     id: number;
     year1: string;
@@ -133,7 +205,7 @@ export const WorkProjects = (): WorkProjectsData => {
         href: "https://www.diningrd.com",
         website: "Dining RD",
         publishDate: "April 2023",
-        listItems: ["PHP", "HTML", "CSS"],
+        listItems: ["PHP", "HTML", "CSS", "WordPress"],
       },
       {
         id: 5,
@@ -149,7 +221,7 @@ export const WorkProjects = (): WorkProjectsData => {
         href: "https://www.clearcordisplays.com",
         website: "ClearCor Displays",
         publishDate: "Feb 2023",
-        listItems: ["PHP", "HTML", "CSS"],
+        listItems: ["PHP", "HTML", "CSS", "slick.js"],
       },
       {
         id: 7,
@@ -157,7 +229,7 @@ export const WorkProjects = (): WorkProjectsData => {
         href: "https://www.captiva2-webdev.com/hubfares",
         website: "Hubfares",
         publishDate: "December 2022",
-        listItems: ["PHP", "HTML", "CSS"],
+        listItems: ["PHP", "HTML", "CSS", "slick.js"],
       },
       {
         id: 8,
@@ -194,7 +266,7 @@ export const PersonalProjects = (): PersonalProjectsData => {
       href: "https://enj657.github.io/travel-itinerary-react/",
       website: "Travel Itinerary",
       publishDate: "June 2022",
-      listItems: ["HTML", "CSS", "React"],
+      listItems: ["React", "JS", "HTML", "CSS"],
     },
     {
       id: 3,
@@ -202,7 +274,7 @@ export const PersonalProjects = (): PersonalProjectsData => {
       href: "https://enj657.github.io/meme-generator/",
       website: "Meme Generator",
       publishDate: "June 2022",
-      listItems: ["React", "HTML", "CSS"],
+      listItems: ["React", "JS", "HTML", "CSS"],
     },
   ];
 
