@@ -77,48 +77,50 @@ export default function Projects() {
       ) : (
         // Render the actual content once the data is loaded
         <>
-          <div className='flex flex-col align-middle md:flex-row mb-8 md:m-0'>
-            <h2 className='px-4 pb-4 pt-2 text-center text-2xl text-teal-500 md:px-12 md:pb-2 md:text-left lg:px-12 lg:py-2'>
-              Projects
-            </h2>
-            <div className='flex flex-grow gap-3 md:gap-6 lg:gap-3'>
-              <div className='relative flex flex-grow'>
-                <input
-                  className='w-full h-12 rounded-3xl border border-white bg-transparent px-5 text-base text-[#B842DC] focus:outline-none focus:ring focus:ring-teal-500/70'
-                  type='text'
-                  value={filterCriteria}
-                  onChange={handleInputChange}
-                  onFocus={handleInputChange} // Display suggestions on input focus
-                  onBlur={handleInputBlur} // Hide suggestions when input loses focus
-                  placeholder='Filter projects by technology...'
-                />
+          <div className='sticky top-0 z-20 bg-[#0e1d35] md:bg-[#0e1c35] lg:bg-[#0e1d35] rounded-b-xl'>
+            <div className='pb-4 pt-4 flex flex-col align-middle md:m-0 md:flex-row'>
+              <h2 className='px-4 pb-4 pt-2 text-center text-2xl text-teal-500 md:px-12 md:pb-4 md:text-left lg:px-12 lg:pt-2 lg:pb-4'>
+                Projects
+              </h2>
+              <div className='flex flex-grow gap-3 px-3 md:px-0 md:gap-6 lg:gap-3 lg:pr-12'>
+                <div className='relative flex flex-grow'>
+                  <input
+                    className='h-12 w-full rounded-3xl border border-white bg-transparent px-5 text-base text-[#B842DC] focus:outline-none focus:ring focus:ring-teal-500/70'
+                    type='text'
+                    value={filterCriteria}
+                    onChange={handleInputChange}
+                    onFocus={handleInputChange} // Display suggestions on input focus
+                    onBlur={handleInputBlur} // Hide suggestions when input loses focus
+                    placeholder='Filter projects by technology...'
+                  />
 
-                {filteredSuggestions.length > 0 && (
-                  <ul className='absolute top-12 z-10 max-h-48 w-full overflow-y-auto rounded-lg border border-gray-300 bg-white/90 text-[#B842DC] shadow-lg'>
-                    {filteredSuggestions.map((suggestion, index) => (
-                      <li
-                        key={index}
-                        className='cursor-pointer px-5 py-2 hover:bg-gray-100 hover:text-teal-500'
-                        onClick={() => handleSuggestionSelect(suggestion)}
-                      >
-                        {suggestion}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                  {filteredSuggestions.length > 0 && (
+                    <ul className='absolute top-12 z-10 max-h-48 w-full overflow-y-auto rounded-lg border border-gray-300 bg-white/90 text-[#B842DC] shadow-lg'>
+                      {filteredSuggestions.map((suggestion, index) => (
+                        <li
+                          key={index}
+                          className='cursor-pointer px-5 py-2 hover:bg-gray-100 hover:text-teal-500'
+                          onClick={() => handleSuggestionSelect(suggestion)}
+                        >
+                          {suggestion}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+                <button
+                  className='flex h-12 w-12 justify-center rounded-full border px-4 py-1 align-middle text-base text-teal-500 hover:text-[#B842DC] md:mr-12 lg:m-0'
+                  onClick={() => setFilterCriteria('')}
+                >
+                  <XSvg />
+                </button>
               </div>
-              <button
-                className='h-12 w-12 rounded-full border px-4 py-1 text-base text-teal-500 hover:text-[#B842DC] md:mr-12 lg:m-0 flex align-middle justify-center'
-                onClick={() => setFilterCriteria('')}
-              >
-                <XSvg />
-              </button>
             </div>
           </div>
-
-          <h3 className='p-4 pb-3 text-center text-xl text-teal-500 md:px-12 md:py-8 md:pb-2 md:text-left lg:px-12 lg:py-8'>
+          <h3 className='p-4 pb-3 text-center text-xl text-teal-500 md:px-12 md:pt-4 md:pb-2 md:text-left lg:px-12 lg:pt-4 lg:pb-8'>
             Work Projects
           </h3>
+
           {filteredWorkProjects.length === 0 && <CardNotFound />}
           {filteredWorkProjects.map((dataItem) => (
             <Tilt

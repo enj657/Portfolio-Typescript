@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function About() {
   return (
-    <section className='flex flex-1 p-4 md:px-12 md:py-8' id='about'>
+    <section className='flex flex-1 p-4 md:px-12 md:pt-8 md:pb-4' id='about'>
       <div className='flex flex-col justify-center'>
         <h2 className='pb-3 md:pt-12 text-center text-2xl text-teal-500 md:text-left'>
           About
