@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { filterDataByListItem } from './Filter';
 import CardNotFound from './CardNotFound';
+import XSvg from './XSvg';
 
 export default function Projects() {
   const [filterCriteria, setFilterCriteria] = useState('');
@@ -76,14 +77,14 @@ export default function Projects() {
       ) : (
         // Render the actual content once the data is loaded
         <>
-          <div className='flex flex-col align-middle md:flex-row'>
+          <div className='flex flex-col align-middle md:flex-row mb-8 md:m-0'>
             <h2 className='px-4 pb-4 pt-2 text-center text-2xl text-teal-500 md:px-12 md:pb-2 md:text-left lg:px-12 lg:py-2'>
               Projects
             </h2>
             <div className='flex flex-grow gap-3 md:gap-6 lg:gap-3'>
               <div className='relative flex flex-grow'>
                 <input
-                  className='flex h-12 flex-grow rounded-3xl border border-white bg-transparent px-5 text-base text-[#B842DC] focus:outline-none focus:ring focus:ring-teal-500/70'
+                  className='w-full h-12 rounded-3xl border border-white bg-transparent px-5 text-base text-[#B842DC] focus:outline-none focus:ring focus:ring-teal-500/70'
                   type='text'
                   value={filterCriteria}
                   onChange={handleInputChange}
@@ -110,7 +111,7 @@ export default function Projects() {
                 className='h-12 w-12 rounded-full border px-3 py-1 text-base text-teal-500 hover:text-[#B842DC] md:mr-12 lg:m-0'
                 onClick={() => setFilterCriteria('')}
               >
-                ✖
+                <XSvg />
               </button>
             </div>
           </div>
