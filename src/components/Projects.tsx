@@ -80,7 +80,7 @@ export default function Projects() {
             <h2 className='px-4 pb-4 pt-2 text-center text-2xl text-teal-500 md:px-12 md:pb-2 md:text-left lg:px-12 lg:py-2'>
               Projects
             </h2>
-            <div className=' flex flex-grow gap-3 md:gap-6 lg:gap-2'>
+            <div className='flex flex-grow gap-3 md:gap-6 lg:gap-3'>
               <div className='relative flex flex-grow'>
                 <input
                   className='flex h-12 flex-grow rounded-3xl border border-white bg-transparent px-5 text-base text-[#B842DC] focus:outline-none focus:ring focus:ring-teal-500/70'
@@ -128,7 +128,6 @@ export default function Projects() {
               glarePosition='top'
               glareBorderRadius='1.5rem'
               scale={1.0}
-              gyroscope={true}
               key={dataItem.id}
             >
               <div className='relative flex flex-col rounded-3xl py-8 sm:grid-cols-6 md:mb-10  md:grid md:p-8 md:backdrop-blur-sm md:backdrop-filter'>
