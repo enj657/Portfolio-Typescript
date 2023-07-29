@@ -108,7 +108,7 @@ export default function Projects() {
                 )}
               </div>
               <button
-                className='h-12 w-12 rounded-full border px-3 py-1 text-base text-teal-500 hover:text-[#B842DC] md:mr-12 lg:m-0'
+                className='h-12 w-12 rounded-full border px-4 py-1 text-base text-teal-500 hover:text-[#B842DC] md:mr-12 lg:m-0 flex align-middle justify-center'
                 onClick={() => setFilterCriteria('')}
               >
                 <XSvg />
