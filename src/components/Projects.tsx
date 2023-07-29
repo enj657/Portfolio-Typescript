@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Tilt from 'react-parallax-tilt';
 import { WorkProjects, PersonalProjects } from '../data/data';
 import Image from 'next/image';
@@ -9,6 +9,7 @@ import CardNotFound from './CardNotFound';
 import XSvg from './XSvg';
 
 export default function Projects() {
+  const topRef = useRef<HTMLDivElement | null>(null); // Specify the type of topRef
   const [filterCriteria, setFilterCriteria] = useState('');
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -40,10 +41,17 @@ export default function Projects() {
     new Set(allData.flatMap((proj) => proj.listItems))
   );
 
-  // Filter the list of possible items based on the current input
-  const filteredSuggestionsArray = allListItems.filter((item) =>
-    item.toLowerCase().includes(filterCriteria.toLowerCase())
-  );
+  // Function to scroll to the top element
+  const scrollToTop = () => {
+    if (topRef.current) {
+      topRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // New useEffect to scroll to the top when filterCriteria changes
+  useEffect(() => {
+    scrollToTop();
+  }, [filterCriteria]);
 
   // Filter the list of possible items based on the current input and set the filtered suggestions
   const handleInputChange = (e: any) => {
@@ -71,18 +79,18 @@ export default function Projects() {
   };
 
   return (
-    <section className='' id='projects'>
+    <section className='' id='projects' ref={topRef}>
       {isLoading ? ( // Render loading state while data is being fetched
         <div>Loading...</div>
       ) : (
         // Render the actual content once the data is loaded
         <>
-          <div className='sticky top-0 z-20 bg-[#0e1d35] md:bg-[#0e1c35] lg:bg-[#0e1d35] rounded-b-xl'>
-            <div className='pb-4 pt-4 flex flex-col align-middle md:m-0 md:flex-row'>
-              <h2 className='px-4 pb-4 pt-2 text-center text-2xl text-teal-500 md:px-12 md:pb-4 md:text-left lg:px-12 lg:pt-2 lg:pb-4'>
+          <div className='sticky top-0 z-20 rounded-b-xl bg-[#0e1d35] md:bg-[#0e1c35] lg:bg-[#0e1d35]'>
+            <div className='flex flex-col pb-4 pt-4 align-middle md:m-0 md:flex-row'>
+              <h2 className='px-4 pb-4 pt-2 text-center text-2xl text-teal-500 md:px-12 md:pb-4 md:text-left lg:px-12 lg:pb-4 lg:pt-2'>
                 Projects
               </h2>
-              <div className='flex flex-grow gap-3 px-3 md:px-0 md:gap-6 lg:gap-3 lg:pr-12'>
+              <div className='flex flex-grow gap-3 px-3 md:gap-6 md:px-0 lg:gap-3 lg:pr-12'>
                 <div className='relative flex flex-grow'>
                   <input
                     className='h-12 w-full rounded-3xl border border-white bg-transparent px-5 text-base text-[#B842DC] focus:outline-none focus:ring focus:ring-teal-500/70'
@@ -117,7 +125,7 @@ export default function Projects() {
               </div>
             </div>
           </div>
-          <h3 className='p-4 pb-3 text-center text-xl text-teal-500 md:px-12 md:pt-4 md:pb-2 md:text-left lg:px-12 lg:pt-4 lg:pb-8'>
+          <h3 className='p-4 pb-3 text-center text-xl text-teal-500 md:px-12 md:pb-2 md:pt-4 md:text-left lg:px-12 lg:pb-8 lg:pt-4'>
             Work Projects
           </h3>
 
