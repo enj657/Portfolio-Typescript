@@ -22,18 +22,35 @@ export default function Projects() {
     if (projectsComponent) {
       const { top } = projectsComponent.getBoundingClientRect();
       window.scrollTo({
-        top: window.scrollY + top, // Calculate the relative position to the current scroll position
+        top: window.scrollY + top,
         behavior: 'smooth',
       });
     }
   };
 
   useEffect(() => {
+    const handleKeyPress = (event: any) => {
+      if (event.key === 'Enter') {
+        setFilterInputFocused(false);
+        handleFilterInputFocus();
+      }
+    };
+
     const filterInput = document.getElementById('filterInput');
 
     if (filterInputFocused && filterInput) {
       filterInput.focus();
     }
+
+    if (filterInput) {
+      filterInput.addEventListener('keypress', handleKeyPress);
+    }
+
+    return () => {
+      if (filterInput) {
+        filterInput.removeEventListener('keypress', handleKeyPress);
+      }
+    };
   }, [filterInputFocused]);
 
   useEffect(() => {
