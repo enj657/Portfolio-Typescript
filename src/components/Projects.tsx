@@ -78,7 +78,7 @@ export default function Projects() {
   // Extract all unique technology items from the merged data
   const allListItems = Array.from(
     new Set(allData.flatMap((proj) => proj.listItems))
-  );
+  ).sort((a, b) => a.localeCompare(b));
 
   // Function to scroll to the top of the component
   const scrollToTop = () => {
@@ -125,6 +125,26 @@ export default function Projects() {
     }, 100);
   };
 
+  // Create a ref to the list element to scroll the selected item into view
+  const dropdownListRef = useRef<HTMLUListElement | null>(null);
+
+  // Scroll to the selected item when 'selectedSuggestionIndex' changes
+  useEffect(() => {
+    if (selectedSuggestionIndex !== -1 && dropdownListRef.current) {
+      const selectedElement = dropdownListRef.current.children[
+        selectedSuggestionIndex
+      ] as HTMLElement;
+
+      if (selectedElement) {
+        selectedElement.scrollIntoView({
+          block: 'nearest',
+          inline: 'nearest',
+          behavior: 'smooth',
+        });
+      }
+    }
+  }, [selectedSuggestionIndex]);
+
   return (
     <section className='' id='projects'>
       {isLoading ? ( // Render loading state while data is being fetched
@@ -136,7 +156,7 @@ export default function Projects() {
       ) : (
         // Render the actual content once the data is loaded
         <>
-          <div className='sticky top-0 z-20 rounded-b-xl bg-[#0e1d35] md:bg-[#0e1c35] lg:bg-[#0e1d35]'>
+          <div className='sticky top-0 z-20 rounded-b-xl bg-[#0e1d35]/90 bg-blend-normal md:bg-[#0e1c35]/90 lg:bg-[#0e1d35]/90'>
             <div className='flex flex-col pb-4 pt-4 align-middle md:m-0 md:flex-row'>
               <h2 className='px-4 pb-4 pt-2 text-center text-2xl text-teal-500 md:px-12 md:pb-4 md:text-left lg:px-12 lg:pb-4 lg:pt-2'>
                 Projects
@@ -182,7 +202,10 @@ export default function Projects() {
                   />
 
                   {filteredSuggestions.length > 0 && (
-                    <ul className='absolute top-12 z-10 max-h-48 w-full overflow-y-auto rounded-lg border border-gray-300 bg-white/90 text-[#B842DC] shadow-lg'>
+                    <ul
+                      ref={dropdownListRef} // Attach the ref to the ul element
+                      className='overflow-s absolute top-12 z-10 max-h-48 w-full overflow-y-auto rounded-lg border border-gray-300 bg-white/90 text-[#B842DC] shadow-lg'
+                    >
                       {filteredSuggestions.map((suggestion, index) => (
                         <li
                           key={index}
