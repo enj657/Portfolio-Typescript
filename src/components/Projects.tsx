@@ -18,14 +18,14 @@ export default function Projects() {
 
   const handleFilterInputFocus = () => {
     setFilterInputFocused(true);
-    const filterInput = document.getElementById('filterInput');
-    if (filterInput) {
-      filterInput.scrollIntoView({ behavior: 'smooth' });
+    const projectsComponent = document.getElementById('projects');
+    if (projectsComponent) {
+      const { top } = projectsComponent.getBoundingClientRect();
+      window.scrollTo({
+        top: window.scrollY + top, // Calculate the relative position to the current scroll position
+        behavior: 'smooth',
+      });
     }
-  };
-
-  const handleFilterInputBlur = () => {
-    setFilterInputFocused(false);
   };
 
   useEffect(() => {
@@ -79,7 +79,7 @@ export default function Projects() {
     setFilterCriteria(input);
 
     // Scroll to the top of the filter input
-    const filterInput = document.getElementById('filterInput');
+    const filterInput = document.getElementById('projects');
     if (filterInput) {
       filterInput.scrollIntoView({ behavior: 'smooth' });
     }
@@ -111,7 +111,11 @@ export default function Projects() {
   return (
     <section className='' id='projects'>
       {isLoading ? ( // Render loading state while data is being fetched
-        <div>Loading...</div>
+        <div>
+          <h2 className='px-4 pb-4 pt-2 text-center text-2xl text-teal-500 md:px-12 md:pb-4 md:text-left lg:px-12 lg:pb-4 lg:pt-2'>
+            Projects
+          </h2>
+        </div>
       ) : (
         // Render the actual content once the data is loaded
         <>
