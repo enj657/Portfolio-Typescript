@@ -14,6 +14,28 @@ export default function Projects() {
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [filterInputFocused, setFilterInputFocused] = useState(false);
+
+  const handleFilterInputFocus = () => {
+    setFilterInputFocused(true);
+    const filterInput = document.getElementById('filterInput');
+    if (filterInput) {
+      filterInput.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleFilterInputBlur = () => {
+    setFilterInputFocused(false);
+  };
+
+  useEffect(() => {
+    const filterInput = document.getElementById('filterInput');
+
+    if (filterInputFocused && filterInput) {
+      filterInput.focus();
+    }
+  }, [filterInputFocused]);
+
   useEffect(() => {
     // Simulate data fetching with a delay of 1 second
     setTimeout(() => {
@@ -41,14 +63,12 @@ export default function Projects() {
     new Set(allData.flatMap((proj) => proj.listItems))
   );
 
-  // Function to scroll to the top element
+  // Function to scroll to the top of the component
   const scrollToTop = () => {
-    if (topRef.current) {
-      topRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
+    topRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // New useEffect to scroll to the top when filterCriteria changes
+  // Scroll to top whenever filterCriteria changes
   useEffect(() => {
     scrollToTop();
   }, [filterCriteria]);
@@ -57,6 +77,9 @@ export default function Projects() {
   const handleInputChange = (e: any) => {
     const input = e.target.value;
     setFilterCriteria(input);
+
+    // Scroll to the top immediately when input changes
+    scrollToTop();
 
     const suggestions = allListItems.filter((item) =>
       item.toLowerCase().includes(input.toLowerCase())
@@ -87,18 +110,21 @@ export default function Projects() {
         <>
           <div className='sticky top-0 z-20 rounded-b-xl bg-[#0e1d35] md:bg-[#0e1c35] lg:bg-[#0e1d35]'>
             <div className='flex flex-col pb-4 pt-4 align-middle md:m-0 md:flex-row'>
-              <h2 className='px-4 pb-4 pt-2 text-center text-2xl text-teal-500 md:px-12 md:pb-4 md:text-left lg:px-12 lg:pb-4 lg:pt-2'>
+              <h2
+                className='px-4 pb-4 pt-2 text-center text-2xl text-teal-500 md:px-12 md:pb-4 md:text-left lg:px-12 lg:pb-4 lg:pt-2'
+              >
                 Projects
               </h2>
               <div className='flex flex-grow gap-3 px-3 md:gap-6 md:px-0 lg:gap-3 lg:pr-12'>
                 <div className='relative flex flex-grow'>
                   <input
+                    id='filterInput' // Add an ID to the filter input
                     className='h-12 w-full rounded-3xl border border-white bg-transparent px-5 text-base text-[#B842DC] focus:outline-none focus:ring focus:ring-teal-500/70'
                     type='text'
                     value={filterCriteria}
                     onChange={handleInputChange}
-                    onFocus={handleInputChange} // Display suggestions on input focus
-                    onBlur={handleInputBlur} // Hide suggestions when input loses focus
+                    onFocus={handleFilterInputFocus}
+                    onBlur={handleFilterInputBlur} // Assign the onBlur event handler
                     placeholder='Filter projects by technology...'
                   />
 
