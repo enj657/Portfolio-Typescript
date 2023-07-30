@@ -13,7 +13,7 @@ export default function Projects() {
   const [filterCriteria, setFilterCriteria] = useState('');
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-
+  const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
   const [filterInputFocused, setFilterInputFocused] = useState(false);
 
   const handleFilterInputFocus = () => {
@@ -74,7 +74,6 @@ export default function Projects() {
   }, [filterCriteria]);
 
   // Filter the list of possible items based on the current input and set the filtered suggestions
-  // Modify handleInputChange function to scroll to the top of the filter input
   const handleInputChange = (e: any) => {
     const input = e.target.value;
     setFilterCriteria(input);
@@ -90,12 +89,16 @@ export default function Projects() {
     );
 
     setFilteredSuggestions(suggestions);
+    setSelectedSuggestionIndex(-1); // Reset the selected suggestion index when the input changes
   };
 
   // Handle selecting a suggestion from the autocomplete dropdown
-  const handleSuggestionSelect = (suggestion: any) => {
-    setFilterCriteria(suggestion);
-    setFilteredSuggestions([]);
+  const handleSuggestionSelect = (suggestionIndex: number) => {
+    if (suggestionIndex >= 0 && suggestionIndex < filteredSuggestions.length) {
+      setFilterCriteria(filteredSuggestions[suggestionIndex]);
+      setFilteredSuggestions([]);
+      setSelectedSuggestionIndex(-1); // Reset the selected suggestion index after selecting a suggestion
+    }
   };
 
   // Handle hiding the dropdown when the input loses focus
@@ -126,7 +129,34 @@ export default function Projects() {
                     value={filterCriteria}
                     onChange={handleInputChange}
                     onFocus={handleFilterInputFocus}
-                    onBlur={handleFilterInputBlur} // Assign the onBlur event handler
+                    onBlur={handleInputBlur}
+                    onKeyDown={(e) => {
+                      if (e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        setSelectedSuggestionIndex((prevIndex) =>
+                          prevIndex <= 0
+                            ? filteredSuggestions.length - 1
+                            : prevIndex - 1
+                        );
+                      } else if (e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        setSelectedSuggestionIndex((prevIndex) =>
+                          prevIndex === filteredSuggestions.length - 1
+                            ? 0
+                            : prevIndex + 1
+                        );
+                      } else if (
+                        e.key === 'Tab' &&
+                        filteredSuggestions.length > 0
+                      ) {
+                        handleSuggestionSelect(selectedSuggestionIndex);
+                      } else if (
+                        e.key === 'Enter' &&
+                        filteredSuggestions.length > 0
+                      ) {
+                        handleSuggestionSelect(selectedSuggestionIndex);
+                      }
+                    }}
                     placeholder='Filter projects by technology...'
                   />
 
@@ -135,8 +165,12 @@ export default function Projects() {
                       {filteredSuggestions.map((suggestion, index) => (
                         <li
                           key={index}
-                          className='cursor-pointer px-5 py-2 hover:bg-gray-100 hover:text-teal-500'
-                          onClick={() => handleSuggestionSelect(suggestion)}
+                          className={`cursor-pointer px-5 py-2 hover:bg-gray-100 ${
+                            index === selectedSuggestionIndex
+                              ? 'bg-teal-100'
+                              : ''
+                          }`}
+                          onClick={() => handleSuggestionSelect(index)}
                         >
                           {suggestion}
                         </li>
