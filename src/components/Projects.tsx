@@ -74,12 +74,16 @@ export default function Projects() {
   }, [filterCriteria]);
 
   // Filter the list of possible items based on the current input and set the filtered suggestions
+  // Modify handleInputChange function to scroll to the top of the filter input
   const handleInputChange = (e: any) => {
     const input = e.target.value;
     setFilterCriteria(input);
 
-    // Scroll to the top immediately when input changes
-    scrollToTop();
+    // Scroll to the top of the filter input
+    const filterInput = document.getElementById('filterInput');
+    if (filterInput) {
+      filterInput.scrollIntoView({ behavior: 'smooth' });
+    }
 
     const suggestions = allListItems.filter((item) =>
       item.toLowerCase().includes(input.toLowerCase())
@@ -102,7 +106,7 @@ export default function Projects() {
   };
 
   return (
-    <section className='' id='projects' ref={topRef}>
+    <section className='' id='projects'>
       {isLoading ? ( // Render loading state while data is being fetched
         <div>Loading...</div>
       ) : (
@@ -110,9 +114,7 @@ export default function Projects() {
         <>
           <div className='sticky top-0 z-20 rounded-b-xl bg-[#0e1d35] md:bg-[#0e1c35] lg:bg-[#0e1d35]'>
             <div className='flex flex-col pb-4 pt-4 align-middle md:m-0 md:flex-row'>
-              <h2
-                className='px-4 pb-4 pt-2 text-center text-2xl text-teal-500 md:px-12 md:pb-4 md:text-left lg:px-12 lg:pb-4 lg:pt-2'
-              >
+              <h2 className='px-4 pb-4 pt-2 text-center text-2xl text-teal-500 md:px-12 md:pb-4 md:text-left lg:px-12 lg:pb-4 lg:pt-2'>
                 Projects
               </h2>
               <div className='flex flex-grow gap-3 px-3 md:gap-6 md:px-0 lg:gap-3 lg:pr-12'>
