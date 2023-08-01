@@ -50,10 +50,10 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
   };
 
   return (
-    <div className='mt-8 flex flex-col text-center md:mb-8 md:text-left order-4 lg:order-3'>
+    <div className='order-4 mt-8 flex flex-col text-center md:mb-8 md:text-left lg:order-3'>
       <h3>Change the colors!</h3>
       <div className='flex flex-row justify-center gap-8 align-middle md:justify-start '>
-        <div className='justify-center py-6 align-middle'>
+        <div className='relative justify-center py-6 align-middle'>
           <div
             style={{
               padding: '5px',
@@ -75,7 +75,15 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
             />
           </div>
           {primaryDisplayColorPicker ? (
-            <div style={{ position: 'absolute', zIndex: '2' }}>
+            <div
+              className='z-2 absolute'
+              style={{
+                transform: 'translate(0%,-100%)',
+                WebkitTransform: 'translate(0%,-100%)',
+                left: '0%',
+                top: '0%',
+              }}
+            >
               <div
                 style={{
                   position: 'fixed',
@@ -94,7 +102,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
           ) : null}
         </div>
 
-        <div className='justify-center py-6 align-middle'>
+        <div className='relative justify-center py-6 align-middle'>
           <div
             style={{
               padding: '5px',
@@ -116,7 +124,15 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
             />
           </div>
           {secondaryDisplayColorPicker ? (
-            <div style={{ position: 'absolute', zIndex: '2' }}>
+            <div
+              className='z-2 absolute'
+              style={{
+                transform: 'translate(0%,-100%)',
+                WebkitTransform: 'translate(0%,-100%)',
+                left: '0%',
+                top: '0%',
+              }}
+            >
               <div
                 style={{
                   position: 'fixed',
