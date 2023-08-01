@@ -10,13 +10,13 @@ const AboutComponent: React.FC<AboutProps> = ({
   secondaryPickerColor,
 }) => {
   return (
-    <section className='flex flex-1 p-4 md:px-12 md:pb-4 md:pt-8' id='about'>
+    <section className='flex flex-1 p-4 md:pt-0 md:px-12 lg:pb-4 lg:pt-8' id='about'>
       <div className='flex flex-col justify-center'>
         <h2
           style={{
             color: secondaryPickerColor,
           }}
-          className='pb-3 text-center text-2xl text-teal-500 md:pt-12 md:text-left'
+          className='pb-3 text-center text-2xl text-teal-500 md:pt-6 md:text-left'
         >
           About
         </h2>

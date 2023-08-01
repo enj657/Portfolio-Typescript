@@ -50,85 +50,90 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
   };
 
   return (
-    <div>
+    <div className='mt-8 flex flex-col text-center md:mb-8 md:text-left order-4 lg:order-3'>
       <h3>Change the colors!</h3>
-      <div className='flex gap-8 py-6'>
-        <div
-          style={{
-            padding: '5px',
-            background: '#fff',
-            borderRadius: '1px',
-            boxShadow: '0 0 0 1px rgba(0,0,0,.1)',
-            display: 'inline-block',
-            cursor: 'pointer',
-          }}
-          onClick={handlePrimaryClick}
-        >
+      <div className='flex flex-row justify-center gap-8 align-middle md:justify-start '>
+        <div className='justify-center py-6 align-middle'>
           <div
             style={{
-              width: '36px',
-              height: '14px',
-              borderRadius: '2px',
-              background: primaryPickerColor,
+              padding: '5px',
+              background: '#fff',
+              borderRadius: '1px',
+              boxShadow: '0 0 0 1px rgba(0,0,0,.1)',
+              display: 'inline-block',
+              cursor: 'pointer',
             }}
-          />
-        </div>
-        {primaryDisplayColorPicker ? (
-          <div style={{ position: 'absolute', zIndex: '2' }}>
+            onClick={handlePrimaryClick}
+          >
             <div
               style={{
-                position: 'fixed',
-                top: '0px',
-                right: '0px',
-                bottom: '0px',
-                left: '0px',
+                width: '36px',
+                height: '14px',
+                borderRadius: '2px',
+                background: primaryPickerColor,
               }}
-              onClick={handleClose}
             />
-            <SketchPicker color={primaryPickerColor} onChange={handleChange} />
           </div>
-        ) : null}
-      </div>
+          {primaryDisplayColorPicker ? (
+            <div style={{ position: 'absolute', zIndex: '2' }}>
+              <div
+                style={{
+                  position: 'fixed',
+                  top: '0px',
+                  right: '0px',
+                  bottom: '0px',
+                  left: '0px',
+                }}
+                onClick={handleClose}
+              />
+              <SketchPicker
+                color={primaryPickerColor}
+                onChange={handleChange}
+              />
+            </div>
+          ) : null}
+        </div>
 
-      <div className='flex gap-8 pb-12'>
-        <div
-          style={{
-            padding: '5px',
-            background: '#fff',
-            borderRadius: '1px',
-            boxShadow: '0 0 0 1px rgba(0,0,0,.1)',
-            display: 'inline-block',
-            cursor: 'pointer',
-          }}
-          onClick={handleSecondaryClick}
-        >
+        <div className='justify-center py-6 align-middle'>
           <div
             style={{
-              width: '36px',
-              height: '14px',
-              borderRadius: '2px',
-              background: secondaryPickerColor,
+              padding: '5px',
+              background: '#fff',
+              borderRadius: '1px',
+              boxShadow: '0 0 0 1px rgba(0,0,0,.1)',
+              display: 'inline-block',
+              cursor: 'pointer',
             }}
-          />
-        </div>
-        {secondaryDisplayColorPicker ? (
-          <div style={{ position: 'absolute', zIndex: '2' }}>
+            onClick={handleSecondaryClick}
+          >
             <div
               style={{
-                position: 'fixed',
-                top: '0px',
-                right: '0px',
-                bottom: '0px',
-                left: '0px',
+                width: '36px',
+                height: '14px',
+                borderRadius: '2px',
+                background: secondaryPickerColor,
               }}
-              onClick={handleClose}
-            />
-            <SketchPicker
-              color={secondaryPickerColor}
-              onChange={handleSecondChange}
             />
           </div>
-        ) : null}
+          {secondaryDisplayColorPicker ? (
+            <div style={{ position: 'absolute', zIndex: '2' }}>
+              <div
+                style={{
+                  position: 'fixed',
+                  top: '0px',
+                  right: '0px',
+                  bottom: '0px',
+                  left: '0px',
+                }}
+                onClick={handleClose}
+              />
+              <SketchPicker
+                color={secondaryPickerColor}
+                onChange={handleSecondChange}
+              />
+            </div>
+          ) : null}
+        </div>
       </div>
     </div>
   );
