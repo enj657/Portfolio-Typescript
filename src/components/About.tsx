@@ -16,7 +16,7 @@ const AboutComponent: React.FC<AboutProps> = ({
           style={{
             color: secondaryPickerColor,
           }}
-          className='pb-3 text-center text-2xl text-teal-500 md:pt-6 md:text-left'
+          className='pb-3 text-center text-2xl text-teal-500 md:pt-6 lg:pt-12 md:text-left'
         >
           About
         </h2>
