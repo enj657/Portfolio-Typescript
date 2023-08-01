@@ -8,13 +8,41 @@ import { filterDataByListItem } from './Filter';
 import CardNotFound from './CardNotFound';
 import XSvg from './XSvg';
 
-export default function Projects() {
+interface ProjectsProps {
+  primaryPickerColor: string;
+  secondaryPickerColor: string;
+  workProjectHoverStates: boolean[]; // An array of boolean hover states for each project
+  setWorkProjectHoverStates: React.Dispatch<React.SetStateAction<boolean[]>>; // Function to update the hover states for projects
+  personalProjectHoverStates: boolean[]; // An array of boolean hover states for each project
+  setPersonalProjectHoverStates: React.Dispatch<React.SetStateAction<boolean[]>
+  >;
+}
+
+const ProjectsComponent: React.FC<ProjectsProps> = ({
+  primaryPickerColor,
+  secondaryPickerColor,
+  workProjectHoverStates,
+  setWorkProjectHoverStates,
+  personalProjectHoverStates,
+  setPersonalProjectHoverStates,
+}) => {
   const topRef = useRef<HTMLDivElement | null>(null); // Specify the type of topRef
   const [filterCriteria, setFilterCriteria] = useState('');
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
   const [filterInputFocused, setFilterInputFocused] = useState(false);
+
+  // Handle the input click event to show the dropdown list
+  const handleInputClick = () => {
+    if (filteredSuggestions.length > 0) {
+      // Show the dropdown list when the input is clicked and there are filtered suggestions
+      setFilteredSuggestions([]);
+    } else {
+      // Otherwise, show the filtered suggestions
+      setFilteredSuggestions(allListItems);
+    }
+  };
 
   const handleFilterInputFocus = () => {
     setFilterInputFocused(true);
@@ -145,11 +173,47 @@ export default function Projects() {
     }
   }, [selectedSuggestionIndex]);
 
+  // Handle mouse enter and mouse leave events for links
+  const handleLinkMouseEnter = (
+    index: number,
+    projectType: 'work' | 'personal'
+  ) => {
+    if (projectType === 'work') {
+      const updatedWorkHoverStates = [...workProjectHoverStates];
+      updatedWorkHoverStates[index] = true;
+      setWorkProjectHoverStates(updatedWorkHoverStates);
+    } else {
+      const updatedPersonalHoverStates = [...personalProjectHoverStates];
+      updatedPersonalHoverStates[index] = true;
+      setPersonalProjectHoverStates(updatedPersonalHoverStates);
+    }
+  };
+
+  const handleLinkMouseLeave = (
+    index: number,
+    projectType: 'work' | 'personal'
+  ) => {
+    if (projectType === 'work') {
+      const updatedWorkHoverStates = [...workProjectHoverStates];
+      updatedWorkHoverStates[index] = false;
+      setWorkProjectHoverStates(updatedWorkHoverStates);
+    } else {
+      const updatedPersonalHoverStates = [...personalProjectHoverStates];
+      updatedPersonalHoverStates[index] = false;
+      setPersonalProjectHoverStates(updatedPersonalHoverStates);
+    }
+  };
+
   return (
     <section className='' id='projects'>
       {isLoading ? ( // Render loading state while data is being fetched
         <div>
-          <h2 className='px-4 pb-4 pt-2 text-center text-2xl text-teal-500 md:px-12 md:pb-4 md:text-left lg:px-12 lg:pb-4 lg:pt-2'>
+          <h2
+            style={{
+              color: secondaryPickerColor,
+            }}
+            className={`px-4 pb-4 pt-2 text-center text-2xl md:px-12 md:pb-4 md:text-left lg:px-12 lg:pb-4 lg:pt-2`}
+          >
             Projects
           </h2>
         </div>
@@ -158,18 +222,27 @@ export default function Projects() {
         <>
           <div className='sticky top-0 z-20 rounded-b-xl bg-[#0e1d35]/90 bg-blend-normal md:bg-[#0e1c35]/90 lg:bg-[#0e1d35]/90'>
             <div className='flex flex-col pb-4 pt-4 align-middle md:m-0 md:flex-row'>
-              <h2 className='px-4 pb-4 pt-2 text-center text-2xl text-teal-500 md:px-12 md:pb-4 md:text-left lg:px-12 lg:pb-4 lg:pt-2'>
+              <h2
+                style={{
+                  color: secondaryPickerColor,
+                }}
+                className={`px-4 pb-4 pt-2 text-center text-2xl md:px-12 md:pb-4 md:text-left lg:px-12 lg:pb-4 lg:pt-2`}
+              >
                 Projects
               </h2>
               <div className='flex flex-grow gap-3 px-3 md:gap-6 md:px-0 lg:gap-3 lg:pr-12'>
                 <div className='relative flex flex-grow'>
                   <input
-                    id='filterInput' // Add an ID to the filter input
-                    className='h-12 w-full rounded-3xl border border-white bg-transparent px-5 text-base text-[#B842DC] focus:outline-none focus:ring focus:ring-teal-500/70'
+                    id='filterInput'
+                    style={{
+                      color: primaryPickerColor,
+                    }}
+                    className={`h-12 w-full rounded-3xl border border-white bg-transparent px-5 text-base focus:outline-none focus:ring focus:ring-white/30`}
                     type='text'
                     value={filterCriteria}
                     onChange={handleInputChange}
                     onFocus={handleFilterInputFocus}
+                    onClick={handleInputClick}
                     onBlur={handleInputBlur}
                     onKeyDown={(e) => {
                       if (e.key === 'ArrowUp') {
@@ -204,14 +277,17 @@ export default function Projects() {
                   {filteredSuggestions.length > 0 && (
                     <ul
                       ref={dropdownListRef} // Attach the ref to the ul element
-                      className='overflow-s absolute top-12 z-10 max-h-48 w-full overflow-y-auto rounded-lg border border-gray-300 bg-white/90 text-[#B842DC] shadow-lg'
+                      style={{
+                        color: primaryPickerColor,
+                      }}
+                      className={`absolute top-12 z-50 max-h-48 w-full overflow-y-auto rounded-lg border border-gray-300 bg-white/90 shadow-lg`}
                     >
                       {filteredSuggestions.map((suggestion, index) => (
                         <li
                           key={index}
-                          className={`cursor-pointer px-5 py-2 hover:bg-gray-100 ${
+                          className={`cursor-pointer px-5 py-2 ${
                             index === selectedSuggestionIndex
-                              ? 'bg-teal-100'
+                              ? 'bg-gray-400'
                               : ''
                           }`}
                           onClick={() => handleSuggestionSelect(index)}
@@ -223,7 +299,8 @@ export default function Projects() {
                   )}
                 </div>
                 <button
-                  className='flex h-12 w-12 justify-center rounded-full border px-4 py-1 align-middle text-base text-teal-500 hover:text-[#B842DC] md:mr-12 lg:m-0'
+                  style={{ color:primaryPickerColor }}
+                  className={`flex h-12 w-12 justify-center rounded-full border px-4 py-1 align-middle text-base md:mr-12 lg:m-0`}
                   onClick={() => setFilterCriteria('')}
                 >
                   <XSvg />
@@ -231,12 +308,17 @@ export default function Projects() {
               </div>
             </div>
           </div>
-          <h3 className='p-4 pb-3 text-center text-xl text-teal-500 md:px-12 md:pb-2 md:pt-4 md:text-left lg:px-12 lg:pb-8 lg:pt-4'>
+          <h3
+            style={{
+              color: secondaryPickerColor,
+            }}
+            className={`p-4 pb-3 text-center text-xl md:px-12 md:pb-2 md:pt-4 md:text-left lg:px-12 lg:pb-8 lg:pt-4`}
+          >
             Work Projects
           </h3>
 
           {filteredWorkProjects.length === 0 && <CardNotFound />}
-          {filteredWorkProjects.map((dataItem) => (
+          {filteredWorkProjects.map((dataItem, index) => (
             <Tilt
               className='my-8 md:mx-12 lg:m-0'
               glareEnable={true}
@@ -247,7 +329,7 @@ export default function Projects() {
               scale={1.0}
               key={dataItem.id}
             >
-              <div className='relative flex flex-col rounded-3xl py-8 sm:grid-cols-6 md:mb-10  md:grid md:p-8 md:backdrop-blur-sm md:backdrop-filter'>
+              <div className='relative flex flex-col rounded-3xl py-8 sm:grid-cols-6 md:mb-10 md:grid md:p-8 md:backdrop-blur-sm md:backdrop-filter'>
                 <div className='flex justify-center align-middle md:col-span-3 md:my-auto'>
                   <Image
                     className='w-4/6 rounded-lg pb-2 md:w-5/6 md:pb-0'
@@ -259,24 +341,37 @@ export default function Projects() {
                 </div>
                 <div className='flex flex-col justify-between text-center md:col-span-3 md:pl-2 md:text-left'>
                   <div>
-                    <p>
+                    {/* Wrap the link inside a div and attach the mouse events to the div */}
+                    <div
+                      onMouseEnter={() => handleLinkMouseEnter(index, 'work')}
+                      onMouseLeave={() => handleLinkMouseLeave(index, 'work')}
+                    >
                       <Link
-                        className="after:content[''] after:absolute after:-inset-x-0 after:-inset-y-0 after:rounded-3xl after:border-0 after:border-t after:border-white after:border-opacity-30 after:bg-white after:bg-opacity-5 after:shadow-big hover:text-teal-500"
                         href={dataItem.href}
                         target='_blank'
+                        style={{
+                          color: workProjectHoverStates[index]
+                            ? secondaryPickerColor
+                            : '#fff',
+                          transition: 'color 0.3s ease',
+                        }}
+                        className={`after:content[''] after:absolute after:-inset-x-0 after:-inset-y-0 after:rounded-3xl after:border-0 after:border-t after:border-white after:border-opacity-30 after:bg-white after:bg-opacity-5 after:shadow-big`}
                       >
                         {dataItem.website}
                       </Link>
-                    </p>
-                    <p className='mb-8 text-white/70'>{dataItem.publishDate}</p>
+                    </div>
+                    <p className='mb-4 text-white/70'>{dataItem.publishDate}</p>
                   </div>
-                  <ul className='flex flex-wrap  justify-center gap-2 align-middle md:justify-start'>
+                  <ul className='flex flex-wrap justify-center gap-2 align-middle md:justify-start'>
                     {dataItem.listItems.map((item, index) => (
                       <li
                         key={index}
-                        className='mb-1 rounded-3xl border-0 border-t border-white border-opacity-60 bg-gradient-to-b from-[#B842DC]/70 to-[#7c2c95]/60 px-4 py-1 text-sm leading-6 shadow-big lg:px-3 lg:py-0.5'
+                        style={{ backgroundColor: primaryPickerColor }}
+                        className="after:content[''] relative mb-1 rounded-3xl border-0 border-t border-white border-opacity-60 px-4 py-1  shadow-big after:absolute after:-inset-0 after:z-20 after:rounded-3xl after:bg-gradient-to-b after:from-black/10 after:to-black/40 lg:px-3 lg:py-0.5"
                       >
-                        {item}
+                        <span className='relative z-40 text-sm leading-6'>
+                          {item}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -285,12 +380,17 @@ export default function Projects() {
             </Tilt>
           ))}
 
-          <h3 className='p-4 pb-3 text-center text-xl text-teal-500 md:px-12 md:py-8 md:pb-2 md:text-left lg:px-12 lg:py-8'>
+          <h3
+            style={{
+              color: secondaryPickerColor,
+            }}
+            className={`p-4 pb-3 text-center text-xl md:px-12 md:py-8 md:pb-2 md:text-left lg:px-12 lg:py-8`}
+          >
             Personal Projects
           </h3>
 
           {filteredPersonalProjects.length === 0 && <CardNotFound />}
-          {filteredPersonalProjects.map((dataItem) => (
+          {filteredPersonalProjects.map((dataItem, index) => (
             <Tilt
               className='my-8 md:mx-12 lg:m-0'
               glareEnable={true}
@@ -313,24 +413,41 @@ export default function Projects() {
                 </div>
                 <div className='flex flex-col justify-between text-center md:col-span-3 md:pl-2 md:text-left'>
                   <div>
-                    <p>
+                    {/* Wrap the link inside a div and attach the mouse events to the div */}
+                    <div
+                      onMouseEnter={() =>
+                        handleLinkMouseEnter(index, 'personal')
+                      }
+                      onMouseLeave={() =>
+                        handleLinkMouseLeave(index, 'personal')
+                      }
+                    >
                       <Link
-                        className="after:content[''] after:absolute after:-inset-x-0 after:-inset-y-0 after:rounded-3xl after:border-0 after:border-t after:border-white after:border-opacity-30 after:bg-white after:bg-opacity-5 after:shadow-big hover:text-teal-500"
                         href={dataItem.href}
                         target='_blank'
+                        style={{
+                          color: personalProjectHoverStates[index]
+                            ? secondaryPickerColor
+                            : '#fff',
+                          transition: 'color 0.3s ease',
+                        }}
+                        className={`after:content[''] after:absolute after:-inset-x-0 after:-inset-y-0 after:rounded-3xl after:border-0 after:border-t after:border-white after:border-opacity-30 after:bg-white after:bg-opacity-5 after:shadow-big`}
                       >
                         {dataItem.website}
                       </Link>
-                    </p>
+                    </div>
                     <p className='mb-4 text-white/70'>{dataItem.publishDate}</p>
                   </div>
-                  <ul className='flex flex-wrap  justify-center gap-2 align-middle md:justify-start'>
+                  <ul className='flex flex-wrap justify-center gap-2 align-middle md:justify-start'>
                     {dataItem.listItems.map((item, index) => (
                       <li
                         key={index}
-                        className='mb-1 rounded-3xl border-0 border-t border-white border-opacity-60 bg-gradient-to-b from-[#B842DC]/70 to-[#7c2c95]/60 px-4 py-1 text-sm leading-6 shadow-big lg:px-3 lg:py-0.5'
+                        style={{ backgroundColor: primaryPickerColor }}
+                        className="after:content[''] relative mb-1 rounded-3xl border-0 border-t border-white border-opacity-60 px-4 py-1  shadow-big after:absolute after:-inset-0 after:z-20 after:rounded-3xl after:bg-gradient-to-b after:from-black/10 after:to-black/40 lg:px-3 lg:py-0.5"
                       >
-                        {item}
+                        <span className='relative z-40 text-sm leading-6'>
+                          {item}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -342,4 +459,5 @@ export default function Projects() {
       )}
     </section>
   );
-}
+};
+export default ProjectsComponent;

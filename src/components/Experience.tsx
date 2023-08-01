@@ -4,16 +4,48 @@ import React from 'react';
 import Tilt from 'react-parallax-tilt';
 import Link from 'next/link';
 
-export default function ExperienceComponent() {
+interface ExperienceProps {
+  primaryPickerColor: string;
+  secondaryPickerColor: string;
+  experienceHoverStates: boolean[]; // An array of boolean hover states for each project
+  setExperienceHoverStates: React.Dispatch<
+    React.SetStateAction<boolean[]> // Function to update the hover states for projects
+  >;
+}
+
+const ExperienceComponent: React.FC<ExperienceProps> = ({
+  primaryPickerColor,
+  secondaryPickerColor,
+  experienceHoverStates,
+  setExperienceHoverStates,
+}) => {
   const data = Experience();
+
+  // Handle mouse enter and mouse leave events for links
+  const handleLinkMouseEnter = (index: number) => {
+    const updatedExperienceHoverStates = [...experienceHoverStates];
+    updatedExperienceHoverStates[index] = true;
+    setExperienceHoverStates(updatedExperienceHoverStates);
+  };
+
+  const handleLinkMouseLeave = (index: number) => {
+    const updatedExperienceHoverStates = [...experienceHoverStates];
+    updatedExperienceHoverStates[index] = false;
+    setExperienceHoverStates(updatedExperienceHoverStates);
+  };
 
   return (
     <section className='' id='experience'>
-      <h2 className='p-4 pb-3 text-center text-2xl text-teal-500 md:px-12 md:py-8 md:pb-2 md:text-left lg:px-12 lg:py-8'>
+      <h2
+        style={{
+          color: secondaryPickerColor,
+        }}
+        className='p-4 pb-3 text-center text-2xl md:px-12 md:py-8 md:pb-2 md:text-left lg:px-12 lg:py-8'
+      >
         Experience
       </h2>
       <div>
-        {data.map((dataItem) => (
+        {data.map((dataItem, index) => (
           <Tilt
             className='my-8 md:mx-12 lg:m-0'
             glareEnable={true}
@@ -33,24 +65,38 @@ export default function ExperienceComponent() {
                   <p>
                     <strong>{dataItem.title}</strong>
                   </p>
-                  <Link
-                    href={dataItem.href}
-                    target='_blank'
-                    className="after:content[''] mb-4 text-white/70 after:absolute after:-inset-x-0 after:-inset-y-0 after:rounded-3xl after:border-0 after:border-t after:border-white after:border-opacity-30 after:bg-white after:bg-opacity-5 after:shadow-big hover:text-teal-500"
+                  <div
+                    onMouseEnter={() => handleLinkMouseEnter(index)}
+                    onMouseLeave={() => handleLinkMouseLeave(index)}
                   >
-                    {dataItem.company}
-                  </Link>
+                    <Link
+                      href={dataItem.href}
+                      target='_blank'
+                      style={{
+                        color: experienceHoverStates[index]
+                          ? secondaryPickerColor
+                          : '#fff',
+                        transition: 'color 0.3s ease',
+                      }}
+                      className={`after:content[''] after:absolute after:-inset-x-0 after:-inset-y-0 after:rounded-3xl after:border-0 after:border-t after:border-white after:border-opacity-30 after:bg-white after:bg-opacity-5 after:shadow-big`}
+                    >
+                      {dataItem.company}
+                    </Link>
+                  </div>
                   <p className='mb-6 mt-4 text-white/70'>
                     {dataItem.description}
                   </p>
                 </div>
-                <ul className='flex flex-wrap  justify-center gap-2 align-middle md:justify-start'>
+                <ul className='flex flex-wrap justify-center gap-2 align-middle md:justify-start'>
                   {dataItem.listItems.map((item, index) => (
                     <li
                       key={index}
-                      className='mb-1 rounded-3xl border-0 border-t border-white border-opacity-60 bg-gradient-to-b from-[#B842DC]/70 to-[#7c2c95]/60 px-4 py-1 text-sm leading-6 shadow-big lg:px-3 lg:py-0.5'
+                      style={{ backgroundColor: primaryPickerColor }}
+                      className="after:content[''] relative mb-1 rounded-3xl border-0 border-t border-white border-opacity-60 px-4 py-1  shadow-big after:absolute after:-inset-0 after:z-20 after:rounded-3xl after:bg-gradient-to-b after:from-black/10 after:to-black/40 lg:px-3 lg:py-0.5"
                     >
-                      {item}
+                      <span className='relative z-40 text-sm leading-6'>
+                        {item}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -61,4 +107,6 @@ export default function ExperienceComponent() {
       </div>
     </section>
   );
-}
+};
+
+export default ExperienceComponent;

@@ -236,7 +236,6 @@ interface Education {
   href: string;
   company: string;
   degree: string;
-  listItems: string[];
 }
 
 // Define the type for the array of projects
@@ -252,7 +251,6 @@ export const Education = (): EducationData => {
       href: 'https://www.',
       company: 'Washington University in St. Louis',
       degree: 'Certificate in Data Analytics',
-      listItems: [],
     },
     {
       id: 2,
@@ -262,7 +260,6 @@ export const Education = (): EducationData => {
       href: 'https://welcome.miami.edu/',
       company: 'University of Miami',
       degree: 'B.S. Health Sciences, Minor in Religious Studies',
-      listItems: [],
     },
   ];
 

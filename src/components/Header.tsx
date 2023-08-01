@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 
 import Nav from './Nav';
 import Github from './GithubLogo';
@@ -8,23 +8,68 @@ import LinkedIn from './LinkedinLogo';
 import Resume from './ResumeLogo';
 import Logo3 from './Logo3';
 import { Adjective } from '@/data/data';
+import ColorPicker from './ColorPicker';
 
-export default function Header() {
+interface HeaderProps {
+  hoverState4: boolean;
+  setHoverState4: React.Dispatch<React.SetStateAction<boolean>>;
+  navHoverState: boolean[];
+  setNavHoverState: React.Dispatch<React.SetStateAction<boolean[]>>;
+  primaryPickerColor: string;
+  setPrimaryPickerColor: React.Dispatch<React.SetStateAction<string>>;
+  secondaryPickerColor: string;
+  setSecondaryPickerColor: React.Dispatch<React.SetStateAction<string>>;
+  hoverState1: boolean;
+  setHoverState1: React.Dispatch<React.SetStateAction<boolean>>;
+  hoverState2: boolean;
+  setHoverState2: React.Dispatch<React.SetStateAction<boolean>>;
+  hoverState3: boolean;
+  setHoverState3: React.Dispatch<React.SetStateAction<boolean>>;
+  hoveredLink: number;
+  setHoveredLink: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const Header: React.FC<HeaderProps> = ({
+  hoverState4,
+  setHoverState4,
+  navHoverState,
+  setNavHoverState,
+  primaryPickerColor,
+  setPrimaryPickerColor,
+  secondaryPickerColor,
+  setSecondaryPickerColor,
+  hoverState1,
+  setHoverState1,
+  hoverState2,
+  setHoverState2,
+  hoverState3,
+  setHoverState3,
+  hoveredLink,
+  setHoveredLink,
+}) => {
   const data = Adjective();
 
   return (
     <header className='lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:p-12'>
       <div className='flex flex-1 flex-col justify-between p-4 md:px-12 md:py-8 lg:p-0'>
         <div>
-          <div className='mb-4 text-[#B842DC] hover:text-teal-500 lg:pt-8'>
+          <div className={`mb-4 lg:pt-8`}>
             <h1 className='relative m-auto w-48 md:m-0 md:w-80'>
               <Link href='/'>
-                <Logo3 />
+                <Logo3
+                  hoverState4={hoverState4}
+                  setHoverState4={setHoverState4}
+                  primaryPickerColor={primaryPickerColor}
+                  secondaryPickerColor={secondaryPickerColor}
+                />
               </Link>
             </h1>
           </div>
           <div className='w-full md:w-1/2 lg:w-full'>
-            <h2 className='pb-3 text-center text-2xl text-teal-500 md:text-left'>
+            <h2
+              style={{ color: secondaryPickerColor }}
+              className={`pb-3 text-center text-2xl md:text-left`}
+            >
               Web Developer at Captiva{'\u00A0'}Marketing
             </h2>
             <ul className='flex flex-wrap justify-center gap-x-3 text-sm md:justify-start'>
@@ -37,15 +82,37 @@ export default function Header() {
             </ul>
           </div>
           <div className='md:my-20'>
-            <Nav />
+          <Nav
+              navHoverState={navHoverState}
+              setNavHoverState={setNavHoverState}
+              primaryPickerColor={primaryPickerColor}
+              setPrimaryPickerColor={setPrimaryPickerColor}
+              secondaryPickerColor={secondaryPickerColor}
+              setSecondaryPickerColor={setSecondaryPickerColor}
+              hoveredLink={hoveredLink}
+              setHoveredLink={setHoveredLink}
+            />
           </div>
         </div>
+        {/* Color Picker */}
+        <ColorPicker
+          primaryPickerColor={primaryPickerColor}
+          setPrimaryPickerColor={setPrimaryPickerColor}
+          secondaryPickerColor={secondaryPickerColor}
+          setSecondaryPickerColor={setSecondaryPickerColor}
+        />
         <ul className='my-8 flex flex-row justify-center gap-6 md:my-0 md:justify-start'>
           <li>
             <Link
               href='https://github.com/enj657'
               target='_blank'
-              className='text-[#B842DC] hover:text-teal-500'
+              style={{
+                color: hoverState1 ? secondaryPickerColor : primaryPickerColor,
+                transition: 'color 0.3s ease',
+              }}
+              onMouseOver={() => setHoverState1(true)}
+              onMouseOut={() => setHoverState1(false)}
+              className=''
             >
               <span className='sr-only'>Github</span>
               <Github />
@@ -55,7 +122,13 @@ export default function Header() {
             <Link
               href='https://www.linkedin.com/in/enj657/'
               target='_blank'
-              className='text-[#B842DC] hover:text-teal-500'
+              style={{
+                color: hoverState2 ? secondaryPickerColor : primaryPickerColor,
+                transition: 'color 0.3s ease',
+              }}
+              onMouseOver={() => setHoverState2(true)}
+              onMouseOut={() => setHoverState2(false)}
+              className=''
             >
               <span className='sr-only'>LinkedIn</span>
               <LinkedIn />
@@ -65,7 +138,13 @@ export default function Header() {
             <Link
               href=''
               target='_blank'
-              className='text-[#B842DC] hover:text-teal-500'
+              style={{
+                color: hoverState3 ? secondaryPickerColor : primaryPickerColor,
+                transition: 'color 0.3s ease',
+              }}
+              onMouseOver={() => setHoverState3(true)}
+              onMouseOut={() => setHoverState3(false)}
+              className=''
             >
               <span className='sr-only'>Resume</span>
               <Resume />
@@ -75,4 +154,5 @@ export default function Header() {
       </div>
     </header>
   );
-}
+};
+export default Header;

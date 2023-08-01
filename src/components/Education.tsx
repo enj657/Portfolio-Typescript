@@ -4,16 +4,48 @@ import Tilt from 'react-parallax-tilt';
 import { Education } from '@/data/data';
 import Link from 'next/link';
 
-export default function EducationComponent() {
+interface EducationProps {
+  primaryPickerColor: string;
+  secondaryPickerColor: string;
+  educationHoverStates: boolean[]; // An array of boolean hover states for each project
+  setEducationHoverStates: React.Dispatch<
+    React.SetStateAction<boolean[]> // Function to update the hover states for projects
+  >;
+}
+
+const EducationComponent: React.FC<EducationProps> = ({
+  primaryPickerColor,
+  secondaryPickerColor,
+  educationHoverStates,
+  setEducationHoverStates,
+}) => {
   const data = Education();
+
+  // Handle mouse enter and mouse leave events for links
+  const handleLinkMouseEnter = (index: number) => {
+    const updatedEducationHoverStates = [...educationHoverStates];
+    updatedEducationHoverStates[index] = true;
+    setEducationHoverStates(updatedEducationHoverStates);
+  };
+
+  const handleLinkMouseLeave = (index: number) => {
+    const updatedEducationHoverStates = [...educationHoverStates];
+    updatedEducationHoverStates[index] = false;
+    setEducationHoverStates(updatedEducationHoverStates);
+  };
 
   return (
     <section className='' id='education'>
-      <h2 className='p-4 pb-3 text-center text-2xl text-teal-500 md:px-12 md:py-8 md:pb-2 md:text-left lg:px-12 lg:py-8'>
+      <h2
+        style={{
+          color: secondaryPickerColor,
+        }}
+        className={`p-4 pb-3 text-center text-2xl ${secondaryPickerColor} md:px-12 md:py-8 md:pb-2 md:text-left lg:px-12 lg:py-8`}
+      >
         Education
       </h2>
       <div>
-        {data.map((dataItem) => (
+        {data.map((dataItem, index) => (
           <Tilt
             className='my-8 md:mx-12 lg:m-0'
             glareEnable={true}
@@ -24,7 +56,7 @@ export default function EducationComponent() {
             scale={1.0}
             key={dataItem.id}
           >
-            <div className='relative flex flex-col rounded-3xl py-8 sm:grid-cols-6 md:mb-10  md:grid md:p-12 md:backdrop-blur-sm md:backdrop-filter'>
+            <div className='relative flex flex-col rounded-3xl py-8 sm:grid-cols-6 md:mb-10 md:grid md:p-12 md:backdrop-blur-sm md:backdrop-filter'>
               <span className='flex justify-center pb-2 align-middle md:col-span-2 md:justify-start lg:col-span-2 lg:justify-start'>
                 {dataItem.year1} &#8212; {dataItem.year2}
               </span>
@@ -32,24 +64,25 @@ export default function EducationComponent() {
                 <p>
                   <strong>{dataItem.title}</strong>
                 </p>
-                <Link
-                  href={dataItem.href}
-                  target='_blank'
-                  className="after:content[''] mb-4 text-white/70 after:absolute after:-inset-x-0 after:-inset-y-0 after:rounded-3xl after:border-0 after:border-t after:border-white after:border-opacity-30 after:bg-white after:bg-opacity-5 after:shadow-big hover:text-teal-500"
-                >
-                  {dataItem.company}
-                </Link>
-                <p className='text-white/70'>{dataItem.degree}</p>
-                <ul className='flex flex-wrap gap-2'>
-                  {dataItem.listItems.map((item, index) => (
-                    <li
-                      key={index}
-                      className='rounded-3xl bg-gradient-to-b from-teal-900 to-teal-700  px-4 py-1'
+                <div
+                    onMouseEnter={() => handleLinkMouseEnter(index)}
+                    onMouseLeave={() => handleLinkMouseLeave(index)}
+                  >
+                    <Link
+                      href={dataItem.href}
+                      target='_blank'
+                      style={{
+                        color: educationHoverStates[index]
+                          ? secondaryPickerColor
+                          : '#fff',
+                        transition: 'color 0.3s ease',
+                      }}
+                      className={`after:content[''] after:absolute after:-inset-x-0 after:-inset-y-0 after:rounded-3xl after:border-0 after:border-t after:border-white after:border-opacity-30 after:bg-white after:bg-opacity-5 after:shadow-big`}
                     >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                      {dataItem.company}
+                    </Link>
+                  </div>
+                <p className='text-white/70'>{dataItem.degree}</p>
               </div>
             </div>
           </Tilt>
@@ -57,4 +90,6 @@ export default function EducationComponent() {
       </div>
     </section>
   );
-}
+};
+
+export default EducationComponent;
