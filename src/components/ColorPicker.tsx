@@ -50,13 +50,13 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
   };
 
   return (
-    <div className='order-4 mt-8 flex flex-col text-center md:mb-8 md:text-left lg:order-3'>
+    <div className='order-4 mt-8 md:mt-10 flex flex-col text-center md:mb-8 md:text-left lg:order-3'>
       <h3>Change the colors!</h3>
-      <div className='flex flex-row justify-center gap-8 align-middle md:justify-start '>
-        <div className='relative justify-center py-6 align-middle'>
+      <div className='flex flex-row justify-center gap-6 align-middle md:justify-start '>
+        <div className='relative justify-center py-6 align-middle md:pl-0'>
           <div
             style={{
-              padding: '5px',
+              padding: '2px',
               background: '#fff',
               borderRadius: '1px',
               boxShadow: '0 0 0 1px rgba(0,0,0,.1)',
@@ -67,8 +67,8 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
           >
             <div
               style={{
-                width: '36px',
-                height: '14px',
+                width: '60px',
+                height: '18px',
                 borderRadius: '2px',
                 background: primaryPickerColor,
               }}
@@ -105,7 +105,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
         <div className='relative justify-center py-6 align-middle'>
           <div
             style={{
-              padding: '5px',
+              padding: '2px',
               background: '#fff',
               borderRadius: '1px',
               boxShadow: '0 0 0 1px rgba(0,0,0,.1)',
@@ -116,8 +116,8 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
           >
             <div
               style={{
-                width: '36px',
-                height: '14px',
+                width: '60px',
+                height: '18px',
                 borderRadius: '2px',
                 background: secondaryPickerColor,
               }}
