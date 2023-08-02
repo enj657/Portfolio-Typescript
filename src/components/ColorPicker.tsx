@@ -1,6 +1,6 @@
 'use client';
-import React, { useState } from 'react';
-import { SketchPicker, ColorResult } from 'react-color';
+import React, { useEffect, useRef, useState } from 'react';
+import { ChromePicker, ColorResult } from 'react-color';
 
 interface ColorPickerProps {
   primaryPickerColor: string;
@@ -15,17 +15,59 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
   secondaryPickerColor,
   setSecondaryPickerColor,
 }) => {
-  const [primaryDisplayColorPicker, setPrimaryDisplayColorPicker] =
-    useState(false);
-  const [secondaryDisplayColorPicker, setSecondaryDisplayColorPicker] =
-    useState(false);
+  const [primaryDisplayColorPicker, setPrimaryDisplayColorPicker] = useState(
+    false
+  );
+  const [secondaryDisplayColorPicker, setSecondaryDisplayColorPicker] = useState(
+    false
+  );
+
+  const primaryColorPickerRef = useRef<HTMLDivElement>(null);
+  const secondaryColorPickerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleDocumentClick = (event: MouseEvent) => {
+      if (
+        primaryColorPickerRef.current &&
+        !primaryColorPickerRef.current.contains(event.target as Node)
+      ) {
+        setPrimaryDisplayColorPicker(false);
+      }
+      if (
+        secondaryColorPickerRef.current &&
+        !secondaryColorPickerRef.current.contains(event.target as Node)
+      ) {
+        setSecondaryDisplayColorPicker(false);
+      }
+    };
+
+    const handleWindowClick = (event: MouseEvent) => {
+      if (
+        !primaryColorPickerRef.current?.contains(event.target as Node) &&
+        !secondaryColorPickerRef.current?.contains(event.target as Node)
+      ) {
+        setPrimaryDisplayColorPicker(false);
+        setSecondaryDisplayColorPicker(false);
+      }
+    };
+
+    document.addEventListener('click', handleDocumentClick);
+    window.addEventListener('click', handleWindowClick);
+
+    return () => {
+      document.removeEventListener('click', handleDocumentClick);
+      window.removeEventListener('click', handleWindowClick);
+    };
+  }, []);
 
   const handlePrimaryClick = () => {
     setPrimaryDisplayColorPicker(!primaryDisplayColorPicker);
+    setSecondaryDisplayColorPicker(false);
   };
 
   const handleSecondaryClick = () => {
     setSecondaryDisplayColorPicker(!secondaryDisplayColorPicker);
+    setPrimaryDisplayColorPicker(false);
   };
 
   const handleClose = () => {
@@ -33,7 +75,6 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
     setSecondaryDisplayColorPicker(false);
   };
 
-  // Helper function to convert ColorResult to hex string
   const colorResultToHex = (colorResult: ColorResult): string => {
     const { r, g, b } = colorResult.rgb;
     return `#${[r, g, b].map((x) => x.toString(16).padStart(2, '0')).join('')}`;
@@ -52,10 +93,12 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
   return (
     <div className='order-4 mt-8 md:mt-10 flex flex-col text-center md:mb-8 md:text-left lg:order-3'>
       <h3>Change the colors!</h3>
-      <div className='flex flex-row justify-center gap-6 align-middle md:justify-start '>
+      <div className='flex flex-row justify-center gap-6 align-middle md:justify-start'>
         <div className='relative justify-center py-6 align-middle md:pl-0'>
           <div
+            ref={primaryColorPickerRef}
             style={{
+              position: 'relative', // Add relative positioning
               padding: '2px',
               background: '#fff',
               borderRadius: '1px',
@@ -74,12 +117,13 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
               }}
             />
           </div>
-          {primaryDisplayColorPicker ? (
+          {primaryDisplayColorPicker && (
             <div
               className='z-2 absolute'
               style={{
-                transform: 'translate(0%,-100%)',
-                WebkitTransform: 'translate(0%,-100%)',
+                position: 'absolute', // Add absolute positioning
+                transform: 'translate(-25%,-100%)',
+                WebkitTransform: 'translate(-25%,-100%)',
                 left: '0%',
                 top: '0%',
               }}
@@ -94,17 +138,16 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
                 }}
                 onClick={handleClose}
               />
-              <SketchPicker
-                color={primaryPickerColor}
-                onChange={handleChange}
-              />
+              <ChromePicker color={primaryPickerColor} onChange={handleChange} />
             </div>
-          ) : null}
+          )}
         </div>
 
         <div className='relative justify-center py-6 align-middle'>
           <div
+            ref={secondaryColorPickerRef}
             style={{
+              position: 'relative', // Add relative positioning
               padding: '2px',
               background: '#fff',
               borderRadius: '1px',
@@ -123,12 +166,13 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
               }}
             />
           </div>
-          {secondaryDisplayColorPicker ? (
+          {secondaryDisplayColorPicker && (
             <div
               className='z-2 absolute'
               style={{
-                transform: 'translate(0%,-100%)',
-                WebkitTransform: 'translate(0%,-100%)',
+                position: 'absolute', // Add absolute positioning
+                transform: 'translate(-25%,-100%)',
+                WebkitTransform: 'translate(-25%,-100%)',
                 left: '0%',
                 top: '0%',
               }}
@@ -143,12 +187,12 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
                 }}
                 onClick={handleClose}
               />
-              <SketchPicker
+              <ChromePicker
                 color={secondaryPickerColor}
                 onChange={handleSecondChange}
               />
             </div>
-          ) : null}
+          )}
         </div>
       </div>
     </div>
