@@ -35,7 +35,7 @@ const EducationComponent: React.FC<EducationProps> = ({
   };
 
   return (
-    <section className='' id='education'>
+    <section id='education'>
       <h2
         style={{
           color: secondaryPickerColor,

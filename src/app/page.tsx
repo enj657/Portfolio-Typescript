@@ -47,7 +47,7 @@ export default function Home() {
           hoveredLink={hoveredLink}
           setHoveredLink={setHoveredLink}
         />
-        <main className={`lg:w-1/2 `}>
+        <main className={`lg:w-1/2 pb-8`}>
           <About 
             primaryPickerColor={primaryPickerColor}
             secondaryPickerColor={secondaryPickerColor}/>

@@ -82,7 +82,7 @@ const Header: React.FC<HeaderProps> = ({
             </ul>
           </div>
           <div className='md:my-12'>
-          <Nav
+            <Nav
               navHoverState={navHoverState}
               setNavHoverState={setNavHoverState}
               primaryPickerColor={primaryPickerColor}
@@ -95,62 +95,70 @@ const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
         {/* Color Picker */}
-        <ColorPicker
-          primaryPickerColor={primaryPickerColor}
-          setPrimaryPickerColor={setPrimaryPickerColor}
-          secondaryPickerColor={secondaryPickerColor}
-          setSecondaryPickerColor={setSecondaryPickerColor}
-        />
-        <ul className='my-8 flex flex-row justify-center gap-6 md:my-0 md:justify-start order-3 lg:order-4'>
-          <li>
-            <Link
-              href='https://github.com/enj657'
-              target='_blank'
-              style={{
-                color: hoverState1 ? secondaryPickerColor : primaryPickerColor,
-                transition: 'color 0.3s ease',
-              }}
-              onMouseOver={() => setHoverState1(true)}
-              onMouseOut={() => setHoverState1(false)}
-              className=''
-            >
-              <span className='sr-only'>Github</span>
-              <Github />
-            </Link>
-          </li>
-          <li>
-            <Link
-              href='https://www.linkedin.com/in/enj657/'
-              target='_blank'
-              style={{
-                color: hoverState2 ? secondaryPickerColor : primaryPickerColor,
-                transition: 'color 0.3s ease',
-              }}
-              onMouseOver={() => setHoverState2(true)}
-              onMouseOut={() => setHoverState2(false)}
-              className=''
-            >
-              <span className='sr-only'>LinkedIn</span>
-              <LinkedIn />
-            </Link>
-          </li>
-          <li>
-            <Link
-              href=''
-              target='_blank'
-              style={{
-                color: hoverState3 ? secondaryPickerColor : primaryPickerColor,
-                transition: 'color 0.3s ease',
-              }}
-              onMouseOver={() => setHoverState3(true)}
-              onMouseOut={() => setHoverState3(false)}
-              className=''
-            >
-              <span className='sr-only'>Resume</span>
-              <Resume />
-            </Link>
-          </li>
-        </ul>
+        <div>
+          <ColorPicker
+            primaryPickerColor={primaryPickerColor}
+            setPrimaryPickerColor={setPrimaryPickerColor}
+            secondaryPickerColor={secondaryPickerColor}
+            setSecondaryPickerColor={setSecondaryPickerColor}
+          />
+          <ul className='order-3 my-8 flex flex-row justify-center gap-[1.9rem] md:my-0 md:justify-start lg:order-4 lg:pb-8'>
+            <li>
+              <Link
+                href='https://github.com/enj657'
+                target='_blank'
+                style={{
+                  color: hoverState1
+                    ? secondaryPickerColor
+                    : primaryPickerColor,
+                  transition: 'color 0.3s ease',
+                }}
+                onMouseOver={() => setHoverState1(true)}
+                onMouseOut={() => setHoverState1(false)}
+                className=''
+              >
+                <span className='sr-only'>Github</span>
+                <Github />
+              </Link>
+            </li>
+            <li>
+              <Link
+                href='https://www.linkedin.com/in/enj657/'
+                target='_blank'
+                style={{
+                  color: hoverState2
+                    ? secondaryPickerColor
+                    : primaryPickerColor,
+                  transition: 'color 0.3s ease',
+                }}
+                onMouseOver={() => setHoverState2(true)}
+                onMouseOut={() => setHoverState2(false)}
+                className=''
+              >
+                <span className='sr-only'>LinkedIn</span>
+                <LinkedIn />
+              </Link>
+            </li>
+            <li>
+              <Link
+                href=''
+                target='_blank'
+                style={{
+                  color: hoverState3
+                    ? secondaryPickerColor
+                    : primaryPickerColor,
+                  transition: 'color 0.3s ease',
+                }}
+                onMouseOver={() => setHoverState3(true)}
+                onMouseOut={() => setHoverState3(false)}
+                className=''
+              >
+                <span className='sr-only'>Resume</span>
+                <Resume />
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </header>
   );

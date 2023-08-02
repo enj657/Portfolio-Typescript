@@ -89,9 +89,11 @@ const Nav: React.FC<NavProps> = ({
   const springVariants = {
     open: {
       scale: 1.2,
+      x: "8%",
     },
     closed: {
       scale: 1,
+      x: "0%",
     },
   };
 
