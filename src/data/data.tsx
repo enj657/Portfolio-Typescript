@@ -81,15 +81,39 @@ type WorkProjectsData = Projects[];
 export const WorkProjects = (): WorkProjectsData => {
   const data: WorkProjectsData = [
     {
-      id: 1,
+      id: 11,
+      src: '/heartlandhealthevents.png',
+      href: 'https://www.captiva2-webdev.com/heartlandhealthevents',
+      website: 'Heartland Health Events - Development Site',
+      publishDate: 'October 2023',
+      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS'],
+    },
+    {
+      id: 10,
+      src: '/rachelforsttravels.png',
+      href: 'https://www.captiva2-webdev.com/rachelforsttravels',
+      website: 'Rachel Forst Travels - Development Site',
+      publishDate: 'October 2023',
+      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS'],
+    },
+    {
+      id: 9,
+      src: '/fps-logistics.png',
+      href: 'https://www.fps-logistics.com',
+      website: 'FPS Logistics',
+      publishDate: 'August 2023',
+      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS'],
+    },
+    {
+      id: 8,
       src: '/lami-img.png',
       href: 'https://www.captiva2-webdev.com/lami',
-      website: 'Lami Wood',
+      website: 'Lami Wood - Development Site',
       publishDate: 'July 2023',
       listItems: ['PHP', 'JavaScript', 'HTML', 'CSS'],
     },
     {
-      id: 2,
+      id: 7,
       src: '/pmainfo-img.png',
       href: 'https://www.pmainfo.com',
       website: 'Precious Metals Association',
@@ -97,7 +121,7 @@ export const WorkProjects = (): WorkProjectsData => {
       listItems: ['PHP', 'JavaScript', 'HTML', 'CSS'],
     },
     {
-      id: 3,
+      id: 6,
       src: '/stlouisdesignbuild-img.png',
       href: 'https://www.stlouisdesignbuild.com',
       website: 'St. Louis Design Build',
@@ -105,7 +129,7 @@ export const WorkProjects = (): WorkProjectsData => {
       listItems: ['PHP', 'JavaScript', 'HTML', 'CSS'],
     },
     {
-      id: 4,
+      id: 5,
       src: '/diningrd-img.png',
       href: 'https://www.diningrd.com',
       website: 'Dining RD',
@@ -113,7 +137,7 @@ export const WorkProjects = (): WorkProjectsData => {
       listItems: ['PHP', 'JavaScript', 'HTML', 'CSS', 'WordPress'],
     },
     {
-      id: 5,
+      id: 4,
       src: '/industrialally-img.png',
       href: 'https://www.industrial-ally.com',
       website: 'Industrial Ally',
@@ -121,7 +145,7 @@ export const WorkProjects = (): WorkProjectsData => {
       listItems: ['PHP', 'JavaScript', 'HTML', 'CSS'],
     },
     {
-      id: 6,
+      id: 3,
       src: '/clearcordisplays-img.png',
       href: 'https://www.clearcordisplays.com',
       website: 'ClearCor Displays',
@@ -129,15 +153,15 @@ export const WorkProjects = (): WorkProjectsData => {
       listItems: ['PHP', 'JavaScript', 'HTML', 'CSS', 'slick.js'],
     },
     {
-      id: 7,
+      id: 2,
       src: '/hubfares-img.png',
       href: 'https://www.captiva2-webdev.com/hubfares',
-      website: 'Hubfares',
+      website: 'Hubfares - Development Site',
       publishDate: 'December 2022',
       listItems: ['PHP', 'JavaScript', 'HTML', 'CSS', 'slick.js'],
     },
     {
-      id: 8,
+      id: 1,
       src: '/joinschaeffer-img.png',
       href: 'https://www.joinschaeffer.com/',
       website: 'Schaeffer Oil',

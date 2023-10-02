@@ -7,6 +7,7 @@ import About from '@/components/About';
 import ExperienceComponent from '@/components/Experience';
 import Projects from '@/components/Projects';
 import EducationComponent from '@/components/Education';
+import CloserComponent from '@/components/Closer';
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['400'] });
 
@@ -71,6 +72,12 @@ export default function Home() {
             educationHoverStates={educationHoverStates}
             setEducationHoverStates={setEducationHoverStates}
           />
+          {/* <CloserComponent 
+            primaryPickerColor={primaryPickerColor}
+            secondaryPickerColor={secondaryPickerColor}
+            hoverState4={hoverState4}
+            setHoverState4={setHoverState4}
+          /> */}
         </main>
       </div>
     </div>
