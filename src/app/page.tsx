@@ -7,7 +7,7 @@ import About from '@/components/About';
 import ExperienceComponent from '@/components/Experience';
 import Projects from '@/components/Projects';
 import EducationComponent from '@/components/Education';
-import CloserComponent from '@/components/Closer';
+// import CloserComponent from '@/components/Closer';
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['400'] });
 
