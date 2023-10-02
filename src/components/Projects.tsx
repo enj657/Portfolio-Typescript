@@ -332,7 +332,7 @@ const ProjectsComponent: React.FC<ProjectsProps> = ({
               <div className='relative flex flex-col rounded-3xl py-8 sm:grid-cols-6 md:mb-10 md:grid md:p-8 md:backdrop-blur-sm md:backdrop-filter'>
                 <div className='flex justify-center align-middle md:col-span-3 md:my-auto'>
                   <Image
-                    className='w-4/6 rounded-lg pb-2 md:w-5/6 md:pb-0'
+                    className='w-4/6 rounded-lg mb-2 md:w-5/6 md:pb-0'
                     width={300}
                     height={300}
                     src={dataItem.src}
@@ -404,7 +404,7 @@ const ProjectsComponent: React.FC<ProjectsProps> = ({
               <div className='relative flex flex-col rounded-3xl py-8 sm:grid-cols-6 md:mb-10  md:grid md:p-8 md:backdrop-blur-sm md:backdrop-filter'>
                 <div className='flex justify-center align-middle md:col-span-3 md:my-auto'>
                   <Image
-                    className='w-4/6 rounded-lg pb-2 md:w-5/6 md:pb-0'
+                    className='w-4/6 rounded-lg mb-2 md:w-5/6 md:pb-0'
                     width={300}
                     height={300}
                     src={dataItem.src}
