@@ -106,7 +106,7 @@ export const WorkProjects = (): WorkProjectsData => {
     },
     {
       id: 8,
-      src: '/lami-img.png',
+      src: '/lami.png',
       href: 'https://www.captiva2-webdev.com/lami',
       website: 'Lami Wood - Development Site',
       publishDate: 'July 2023',
