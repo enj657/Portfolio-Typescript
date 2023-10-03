@@ -140,9 +140,9 @@ const Header: React.FC<HeaderProps> = ({
               </Link>
             </li>
             <li>
-              <Link
-                href=''
-                target='_blank'
+              <a
+                href='/2023_Resume.pdf'
+                download='2023_Resume'
                 style={{
                   color: hoverState3
                     ? secondaryPickerColor
@@ -155,7 +155,7 @@ const Header: React.FC<HeaderProps> = ({
               >
                 <span className='sr-only'>Resume</span>
                 <Resume />
-              </Link>
+              </a>
             </li>
           </ul>
         </div>
