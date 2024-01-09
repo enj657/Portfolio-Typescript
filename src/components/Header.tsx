@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import React, { useState } from 'react';
-
+import { motion } from 'framer-motion';
 import Nav from './Nav';
 import Github from './GithubLogo';
 import LinkedIn from './LinkedinLogo';
@@ -48,6 +48,24 @@ const Header: React.FC<HeaderProps> = ({
   setHoveredLink,
 }) => {
   const data = Adjective();
+
+  const svgVariants = {
+    hidden: {
+      opacity: 1,
+      scale: .8,
+      stroke: primaryPickerColor,
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      stroke: primaryPickerColor,
+    },
+    hover: {
+      opacity: 1,
+      scale: 1.2,
+      stroke: hoverState4 ? secondaryPickerColor : primaryPickerColor,
+    },
+  };
 
   return (
     <header className='lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:p-12'>
@@ -103,7 +121,13 @@ const Header: React.FC<HeaderProps> = ({
             setSecondaryPickerColor={setSecondaryPickerColor}
           />
           <ul className='order-3 my-8 flex flex-row justify-center gap-[1.9rem] md:my-0 md:justify-start lg:order-4 lg:pb-8'>
-            <li>
+            <motion.li
+              initial='hidden'
+              animate='visible'
+              variants={svgVariants}
+              transition={{ type: 'spring', duration: 3, bounce: 0.8 }}
+              whileHover='hover'
+            >
               <Link
                 href='https://github.com/enj657'
                 target='_blank'
@@ -120,8 +144,14 @@ const Header: React.FC<HeaderProps> = ({
                 <span className='sr-only'>Github</span>
                 <Github />
               </Link>
-            </li>
-            <li>
+            </motion.li>
+            <motion.li
+              initial='hidden'
+              animate='visible'
+              variants={svgVariants}
+              transition={{ type: 'spring', duration: 3, bounce: 0.8 }}
+              whileHover='hover'
+            >
               <Link
                 href='https://www.linkedin.com/in/enj657/'
                 target='_blank'
@@ -138,11 +168,17 @@ const Header: React.FC<HeaderProps> = ({
                 <span className='sr-only'>LinkedIn</span>
                 <LinkedIn />
               </Link>
-            </li>
-            <li>
+            </motion.li>
+            <motion.li
+              initial='hidden'
+              animate='visible'
+              variants={svgVariants}
+              transition={{ type: 'spring', duration: 3, bounce: 0.8 }}
+              whileHover='hover'
+            >
               <a
-                href='/2023_Resume.pdf'
-                download='2023_Resume'
+                href='/July_25_2023_Resume.pdf'
+                download='July_25_2023_Resume'
                 style={{
                   color: hoverState3
                     ? secondaryPickerColor
@@ -156,7 +192,7 @@ const Header: React.FC<HeaderProps> = ({
                 <span className='sr-only'>Resume</span>
                 <Resume />
               </a>
-            </li>
+            </motion.li>
           </ul>
         </div>
       </div>
