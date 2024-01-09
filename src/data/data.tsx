@@ -115,7 +115,7 @@ export const WorkProjects = (): WorkProjectsData => {
     {
       id: 7,
       src: '/pmainfo-img.png',
-      href: 'https://www.pmainfo.com',
+      href: 'https://www.pmainfo.org',
       website: 'Precious Metals Association',
       publishDate: 'June 2023',
       listItems: ['PHP', 'JavaScript', 'HTML', 'CSS'],
