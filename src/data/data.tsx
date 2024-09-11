@@ -313,8 +313,8 @@ export const Experience = (): ExperienceData => {
       href: 'https://www.captiva-marketing.com/',
       company: 'Captiva Marketing',
       description:
-        'I build and maintain websites for over 150 clients. Some recent projects were for companies including Dining RD, Industrial Ally, and ClearCor displays.',
-      listItems: ['HTML', 'CSS', 'JS', 'PHP', 'WordPress'],
+        'I build and maintain websites for over 200 clients. Some recent projects were for companies including MRHFM Law Firm, 1879 Distilling Company, and Frederic Roofing Company.',
+      listItems: ['HTML', 'CSS', 'JS', 'PHP', 'WordPress', 'slick.js'],
     },
     {
       id: 2,
