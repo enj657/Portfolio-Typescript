@@ -308,7 +308,7 @@ export const Experience = (): ExperienceData => {
     {
       id: 1,
       year1: '2022',
-      year2: 'Present',
+      year2: '2025',
       title: 'Web Developer',
       href: 'https://www.captiva-marketing.com/',
       company: 'Captiva Marketing',
