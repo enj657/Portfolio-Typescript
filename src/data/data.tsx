@@ -92,7 +92,7 @@ export const WorkProjects = (): WorkProjectsData => {
     {
       id: 19,
       src: '/ultrabase.png',
-      href: 'https://www.captiva2-webdev.com/ultrabasesystems',
+      href: 'https://www.ultrabasesystems.com',
       website: 'Ultra Base Systems',
       publishDate: 'October 2024',
       listItems: ['PHP', 'JavaScript', 'HTML', 'CSS'],
