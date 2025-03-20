@@ -177,8 +177,8 @@ const Header: React.FC<HeaderProps> = ({
               whileHover='hover'
             >
               <a
-                href='/July_25_2023_Resume.pdf'
-                download='July_25_2023_Resume'
+                href='/March_2025_Resume.pdf'
+                download='March_2025_Resume'
                 style={{
                   color: hoverState3
                     ? secondaryPickerColor
