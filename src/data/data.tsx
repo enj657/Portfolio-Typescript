@@ -257,26 +257,17 @@ export const WorkProjects = (): WorkProjectsData => {
   return data;
 };
 
-// Define the type for the array of projects
 type PersonalProjectsData = Projects[];
 
 export const PersonalProjects = (): PersonalProjectsData => {
   const data: PersonalProjectsData = [
     {
-      id: 1,
-      src: '/topstlouis-img.png',
-      href: 'https://enj657.github.io/TOP_stl_website/',
-      website: 'Fun Things To Do In St. Louis',
-      publishDate: 'April 2022',
-      listItems: ['JavaScript', 'HTML', 'CSS'],
-    },
-    {
-      id: 2,
-      src: '/travelitinerary-img.png',
-      href: 'https://enj657.github.io/travel-itinerary-react/',
-      website: 'Travel Itinerary',
-      publishDate: 'June 2022',
-      listItems: ['React', 'JavaScript', 'HTML', 'CSS'],
+      id: 4,
+      src: '/pokedex.png',
+      href: 'https://pokedex-enj.vercel.app/',
+      website: 'Pokedex',
+      publishDate: 'March 2025',
+      listItems: ['React', 'JavaScript', 'HTML', 'CSS', 'Redux','vite', 'REST API', 'react-query'],
     },
     {
       id: 3,
@@ -287,12 +278,20 @@ export const PersonalProjects = (): PersonalProjectsData => {
       listItems: ['React', 'JavaScript', 'HTML', 'CSS', 'REST API'],
     },
     {
-      id: 4,
-      src: '/pokedex.png',
-      href: 'https://pokedex-enj.vercel.app/',
-      website: 'Pokedex',
-      publishDate: 'March 2025',
-      listItems: ['React', 'JavaScript', 'HTML', 'CSS', 'Redux','vite', 'REST API', 'react-query'],
+      id: 2,
+      src: '/travelitinerary-img.png',
+      href: 'https://enj657.github.io/travel-itinerary-react/',
+      website: 'Travel Itinerary',
+      publishDate: 'June 2022',
+      listItems: ['React', 'JavaScript', 'HTML', 'CSS'],
+    },
+    {
+      id: 1,
+      src: '/topstlouis-img.png',
+      href: 'https://enj657.github.io/TOP_stl_website/',
+      website: 'Fun Things To Do In St. Louis',
+      publishDate: 'April 2022',
+      listItems: ['JavaScript', 'HTML', 'CSS'],
     },
   ];
 
