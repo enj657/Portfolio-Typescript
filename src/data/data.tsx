@@ -88,6 +88,9 @@ export const WorkProjects = (): WorkProjectsData => {
     //   website: 'Heartland Health Events',
     //   publishDate: 'October 2023',
     //   listItems: ['PHP', 'JavaScript', 'HTML', 'CSS'],
+
+
+      // sauer systems, 
     // },
     {
       id: 19,
@@ -95,7 +98,7 @@ export const WorkProjects = (): WorkProjectsData => {
       href: 'https://www.ultrabasesystems.com',
       website: 'Ultra Base Systems',
       publishDate: 'October 2024',
-      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS'],
+      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS', 'Hubspot'],
     },
     {
       id: 18,
@@ -281,7 +284,15 @@ export const PersonalProjects = (): PersonalProjectsData => {
       href: 'https://enj657.github.io/meme-generator/',
       website: 'Meme Generator',
       publishDate: 'June 2022',
-      listItems: ['React', 'JavaScript', 'HTML', 'CSS'],
+      listItems: ['React', 'JavaScript', 'HTML', 'CSS', 'REST API'],
+    },
+    {
+      id: 4,
+      src: '/pokedex.png',
+      href: 'https://pokedex-enj.vercel.app/',
+      website: 'Pokedex',
+      publishDate: 'March 2025',
+      listItems: ['React', 'JavaScript', 'HTML', 'CSS', 'Redux','vite', 'REST API'],
     },
   ];
 
