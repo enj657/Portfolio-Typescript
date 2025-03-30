@@ -98,7 +98,7 @@ export const WorkProjects = (): WorkProjectsData => {
       href: 'https://www.ultrabasesystems.com',
       website: 'Ultra Base Systems',
       publishDate: 'October 2024',
-      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS', 'Hubspot'],
+      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS (Foundation Framework)', 'Hubspot'],
     },
     {
       id: 18,
@@ -106,7 +106,7 @@ export const WorkProjects = (): WorkProjectsData => {
       href: 'https://www.1879distilling.com/',
       website: '1879 Distilling',
       publishDate: 'August 2024',
-      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS'],
+      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS (Foundation Framework)'],
     },
     {
       id: 17,
@@ -114,7 +114,7 @@ export const WorkProjects = (): WorkProjectsData => {
       href: 'https://www.trekkequipment.com/',
       website: 'Trekk Equipment',
       publishDate: 'May 2024',
-      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS'],
+      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS (Foundation Framework)'],
     },
     {
       id: 16,
@@ -122,7 +122,7 @@ export const WorkProjects = (): WorkProjectsData => {
       href: 'https://www.leapforstudents.com/',
       website: 'Leap for Students',
       publishDate: 'May 2024',
-      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS'],
+      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS (Foundation Framework)'],
     },
     {
       id: 15,
@@ -130,7 +130,7 @@ export const WorkProjects = (): WorkProjectsData => {
       href: 'https://www.clsmithindustrial.com/',
       website: 'CL Smith Industrial',
       publishDate: 'March 2024',
-      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS'],
+      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS (Foundation Framework)'],
     },
     {
       id: 14,
@@ -138,7 +138,7 @@ export const WorkProjects = (): WorkProjectsData => {
       href: 'https://www.fredericroofing.com/',
       website: 'Frederic Roofing',
       publishDate: 'February 2024',
-      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS', 'slick.js'],
+      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS (Foundation Framework)', 'slick.js'],
     },
     {
       id: 13,
@@ -146,7 +146,7 @@ export const WorkProjects = (): WorkProjectsData => {
       href: 'https://www.mesolaw.com/',
       website: 'MesoLaw',
       publishDate: 'January 2024',
-      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS'],
+      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS (Foundation Framework)'],
     },
     {
       id: 12,
@@ -154,7 +154,7 @@ export const WorkProjects = (): WorkProjectsData => {
       href: 'https://www.poolkingrec.com/',
       website: 'Pool King Recreation',
       publishDate: 'January 2024',
-      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS']
+      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS (Foundation Framework)']
     },
     {
       id: 11,
@@ -162,7 +162,7 @@ export const WorkProjects = (): WorkProjectsData => {
       href: 'https://www.traversinsurance.com/',
       website: 'Travers Insurance',
       publishDate: 'December 2023',
-      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS'],
+      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS (Foundation Framework)'],
     },
     {
       id: 10,
@@ -170,7 +170,7 @@ export const WorkProjects = (): WorkProjectsData => {
       href: 'https://www.rachelforsttravels.com',
       website: 'Rachel Forst Travels',
       publishDate: 'October 2023',
-      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS'],
+      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS (Foundation Framework)'],
     },
     {
       id: 9,
@@ -178,7 +178,7 @@ export const WorkProjects = (): WorkProjectsData => {
       href: 'https://www.impactmlds.com/',
       website: 'Impact MLDS',
       publishDate: 'September 2023',
-      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS'],
+      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS (Foundation Framework)'],
     },
     {
       id: 8,
@@ -186,7 +186,7 @@ export const WorkProjects = (): WorkProjectsData => {
       href: 'https://www.fps-logistics.com',
       website: 'FPS Logistics',
       publishDate: 'August 2023',
-      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS'],
+      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS (Foundation Framework)'],
     },
     // {
     //   id: 8,
@@ -202,7 +202,7 @@ export const WorkProjects = (): WorkProjectsData => {
       href: 'https://www.pmainfo.org',
       website: 'Precious Metals Association',
       publishDate: 'June 2023',
-      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS'],
+      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS (Foundation Framework)'],
     },
     {
       id: 6,
@@ -210,7 +210,7 @@ export const WorkProjects = (): WorkProjectsData => {
       href: 'https://www.stlouisdesignbuild.com',
       website: 'St. Louis Design Build',
       publishDate: 'May 2023',
-      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS', 'slick.js'],
+      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS (Foundation Framework)', 'slick.js'],
     },
     {
       id: 5,
@@ -218,7 +218,7 @@ export const WorkProjects = (): WorkProjectsData => {
       href: 'https://www.diningrd.com',
       website: 'Dining RD',
       publishDate: 'April 2023',
-      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS', 'WordPress'],
+      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS (Foundation Framework)', 'WordPress'],
     },
     {
       id: 4,
@@ -226,7 +226,7 @@ export const WorkProjects = (): WorkProjectsData => {
       href: 'https://www.industrial-ally.com',
       website: 'Industrial Ally',
       publishDate: 'March 2023',
-      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS'],
+      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS (Foundation Framework)'],
     },
     {
       id: 3,
@@ -234,7 +234,7 @@ export const WorkProjects = (): WorkProjectsData => {
       href: 'https://www.clearcordisplays.com',
       website: 'ClearCor Displays',
       publishDate: 'Feb 2023',
-      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS', 'slick.js'],
+      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS (Foundation Framework)', 'slick.js'],
     },
     {
       id: 2,
@@ -242,7 +242,7 @@ export const WorkProjects = (): WorkProjectsData => {
       href: 'https://www.captiva2-webdev.com/hubfares',
       website: 'Hubfares',
       publishDate: 'December 2022 - development site',
-      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS', 'slick.js'],
+      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS (Foundation Framework)', 'slick.js'],
     },
     {
       id: 1,
@@ -250,7 +250,7 @@ export const WorkProjects = (): WorkProjectsData => {
       href: 'https://www.joinschaeffer.com/',
       website: 'Schaeffer Oil',
       publishDate: 'October 2022',
-      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS'],
+      listItems: ['PHP', 'JavaScript', 'HTML', 'CSS (Foundation Framework)'],
     },
   ];
 
