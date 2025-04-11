@@ -267,7 +267,7 @@ export const PersonalProjects = (): PersonalProjectsData => {
       href: 'https://pokedex-enj.vercel.app/',
       website: 'Pokedex',
       publishDate: 'March 2025',
-      listItems: ['React', 'JavaScript', 'HTML', 'CSS', 'Redux','vite', 'REST API', 'react-query'],
+      listItems: ['React', 'JavaScript', 'TypeScript', 'HTML', 'CSS', 'Redux','vite', 'REST API', 'react-query'],
     },
     {
       id: 3,
