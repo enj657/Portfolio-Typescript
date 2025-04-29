@@ -12,7 +12,7 @@ export const Adjective = (): AdjectiveData => {
   const data: AdjectiveData = [
     {
       id: 1,
-      adjective: 'Web Developer',
+      adjective: 'Software Engineer',
       emoji: '💻',
     },
     {
@@ -267,7 +267,7 @@ export const PersonalProjects = (): PersonalProjectsData => {
       href: 'https://pokedex-enj.vercel.app/',
       website: 'Pokedex',
       publishDate: 'March 2025',
-      listItems: ['React', 'JavaScript', 'TypeScript', 'HTML', 'CSS', 'Redux','vite', 'REST API', 'react-query'],
+      listItems: ['React', 'JavaScript', 'TypeScript', 'HTML', 'CSS', 'Redux','Vite', 'REST API', 'react-query'],
     },
     {
       id: 3,

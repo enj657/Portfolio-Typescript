@@ -88,7 +88,7 @@ const Header: React.FC<HeaderProps> = ({
               style={{ color: secondaryPickerColor }}
               className={`pb-3 text-center text-2xl md:text-left`}
             >
-              Web Developer
+              Software Engineer
             </h2>
             <ul className='flex flex-wrap justify-center gap-x-3 text-sm md:justify-start'>
               {data.map((dataItem) => (
