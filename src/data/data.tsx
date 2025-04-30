@@ -363,7 +363,7 @@ export const Education = (): EducationData => {
       year1: '2021',
       year2: '2022',
       title: 'Student',
-      href: 'https://bootcamp.tlcenter.wustl.edu/data/landing-b5a/?s=Google-Brand&dki=Learn%20Data%20Analytics%20Online%20in%2024%20Weeks&pkw=washington%20university%20data%20analytics&pcrid=458184222381&pmt=e&utm_source=google&utm_medium=cpc&utm_campaign=GGL%7CWASHINGTON-UNIVERSITY-IN-ST-LOUIS%7CSEM%7CDATA%7C-%7COFL%7CTIER-1%7CALL%7CBRD%7CEXACT%7CPrimary%7CGeneral&utm_term=washington%20university%20data%20analytics&utm_content=458184222381&s=google&k=washington%20university%20data%20analytics&gad=1&gclid=Cj0KCQjw2qKmBhCfARIsAFy8buJpGPRAtxhVjBpTE7dAfq4ASI3DoF1tzzLS3OxURhaswpLgyYXb6owaAly5EALw_wcB&gclsrc=aw.ds',
+      href: 'https://careerbootcamps.tlcenter.wustl.edu/programs/data-science/',
       company: 'Washington University in St. Louis',
       degree: 'Certificate in Data Analytics',
     },
